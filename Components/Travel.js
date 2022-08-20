@@ -1,15 +1,9 @@
 import { Flex, Text } from "@chakra-ui/react";
 import TravelButton from "./TravelButton";
+import { atom, useAtom } from "jotai";
+import { planetAtom } from "../state/GlobalState";
 export default function Travel() {
-  const planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn"];
-  const planetList = planets.map((planet) => {
-    return (
-      <div key={planet}>
-        <div className="planetBadge">1</div>
-        <h3>{planet}</h3>
-      </div>
-    );
-  });
+  const [planets, setPlanets] = useAtom(planetAtom);
 
   return (
     <Flex
@@ -23,16 +17,16 @@ export default function Travel() {
       <h1 className="h1Travel">Travel</h1>
       <section className="planets-section">
         <div className="row">
-          <TravelButton planetName="Fitzgerald 5"></TravelButton>
-          <TravelButton planetName="Quetzacotl"></TravelButton>
+          <TravelButton planetName={planets[0].name}></TravelButton>
+          <TravelButton planetName={planets[1].name}></TravelButton>
         </div>
         <div className="row">
-          <TravelButton planetName="Ariana Prime"></TravelButton>
-          <TravelButton planetName="Euclid"></TravelButton>
+          <TravelButton planetName={planets[2].name}></TravelButton>
+          <TravelButton planetName={planets[3].name}></TravelButton>
         </div>
         <div className="row">
-          <TravelButton planetName="Artemis"></TravelButton>
-          <TravelButton planetName="Utopia"></TravelButton>
+          <TravelButton planetName={planets[4].name}></TravelButton>
+          <TravelButton planetName={planets[5].name}></TravelButton>
         </div>
       </section>
     </Flex>
