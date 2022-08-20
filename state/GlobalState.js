@@ -54,7 +54,7 @@ export const mineralAtom = atom([
 export const playerAtom = atom({ cash: 2000, debt: 2001, daysPlayer: 0 });
 
 export const planetAtom = atom([
-  { name: "Fitzgerald 5" },
+  { name: "Fitzgerald 5", active: false },
   { name: "Quetzacoatl" },
   { name: "Ariana Prime" },
   { name: "Euclid" },
