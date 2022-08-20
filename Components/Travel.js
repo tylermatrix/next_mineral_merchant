@@ -12,7 +12,6 @@ export default function Travel() {
       direction="column"
       bg="#353448"
       borderRadius="15px"
-      direction="column"
     >
       <h1 className="h1Travel">Travel</h1>
       <section className="planets-section">
