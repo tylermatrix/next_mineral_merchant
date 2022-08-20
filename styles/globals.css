@@ -1,0 +1,72 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Start of Travel Component */
+.h1Travel {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+.row {
+  display: flex;
+  justify-content: space-evenly;
+}
+.planets-section {
+  margin-top: 1.5rem;
+}
+/* End of Travel Component */
+/* Start of TravelButton Component */
+
+.circle {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  background: rgb(2, 0, 36);
+  background: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 1) 48%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  color: white;
+  border: 5px solid blue;
+
+  border-radius: 50%;
+}
+
+.text {
+  color: white;
+  margin: auto;
+}
+.travelButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+/* End of Travel Button Component */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
