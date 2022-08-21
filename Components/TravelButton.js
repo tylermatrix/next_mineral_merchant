@@ -28,7 +28,7 @@ function TravelButton({ planetName = "planet" }) {
     //     <h4 className="text">{planetName}</h4>
     //   </div>
     // </div>
-    <Flex direction="column" gap="8.6px">
+    <Flex direction="column" gap="8.6px" fontFamily={"Poppins"}>
       <Flex
         height="100px"
         width="100px"
