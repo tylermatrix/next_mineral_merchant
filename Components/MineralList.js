@@ -36,10 +36,10 @@ function MineralList() {
       >
         Mineral
       </Text>
-      {minerals.map((mineral, index) => (
+      {minerals.map((mineralFromArray, index) => (
         <Flex
           backgroundColor="rgb(255, 255, 255, 0.1)"
-          key={mineral.id}
+          key={mineralFromArray.id}
           marginBottom="15px"
           as={motion.div}
           whileHover={{ scale: 0.99 }}
@@ -48,12 +48,12 @@ function MineralList() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { delay: index * 0.1 } }}
           onClick={() => {
-            handleClick(mineral);
+            handleClick(mineralFromArray);
           }}
         >
           <Flex marginLeft="20px" width="160px">
             <Image
-              src={mineral.image}
+              src={mineralFromArray.image}
               alt="mineral image"
               height="38px"
               width="38px"
@@ -65,11 +65,11 @@ function MineralList() {
               as={motion.div}
               whileHover={{ color: "#FFF" }}
             >
-              {mineral.name}
+              {mineralFromArray.name}
             </Text>
           </Flex>
-          <Text color="white">{mineral.amountOwned}</Text>
-          <Text color="white">{mineral.price}</Text>
+          <Text color="white">{mineralFromArray.amountOwned}</Text>
+          <Text color="white">{mineralFromArray.price}</Text>
         </Flex>
       ))}
       {/*

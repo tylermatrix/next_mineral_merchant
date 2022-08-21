@@ -19,19 +19,59 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { GiMineralPearls } from "react-icons/gi";
-function SelectedMineral({ mineral }) {
+import { Switch, Stack } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
+function SelectedMineral({ mineral: mineralFromArray }) {
   const [mineralPicked, setMineralPicked] = useAtom(mineralPickedAtom);
   const [sliderValue, setSliderValue] = useState(50);
   const [player, setPlayer] = useAtom(playerAtom);
+  const [mineral, setMineral] = useAtom(mineralAtom);
   const [mineralToBuyOrSell, setMineralToBuyOrSell] = useAtom(
     mineralToBuyOrSellAtom
   );
+  const [isBuying, setIsBuying] = useState(false);
 
   const labelStyles = {
     mt: "2",
     ml: "-2.5",
     fontSize: "sm",
   };
+
+  const handleChange = (e) => {
+    setIsBuying((isBuying = !isBuying));
+    console.log(isBuying);
+  };
+  const handleBuyOrSell = () => {
+    // create function to buy or sell mineral based on buy or sell state and mineral selected and player money and mineral price and mineral quantity from slider value
+    if (isBuying) {
+      if (player.cash >= mineralToBuyOrSell.price * sliderValue) {
+        setPlayer({
+          ...player,
+          cash: player.cash - mineralToBuyOrSell.price * sliderValue,
+        });
+        setMineralToBuyOrSell({
+          ...mineralToBuyOrSell,
+          amountOwned: mineralToBuyOrSell.amountOwned + sliderValue,
+        });
+        setMineral({
+          ...setMineralToBuyOrSell,
+        });
+      }
+    }
+    if (!isBuying) {
+      if (mineralToBuyOrSell.quantity >= sliderValue) {
+        setMineralToBuyOrSell({
+          ...mineralToBuyOrSell,
+          quantity: mineralToBuyOrSell.quantity - sliderValue,
+        });
+        setPlayer({
+          ...player,
+          money: player.money + mineralFromArray.price * sliderValue,
+        });
+      }
+    }
+  };
+
   return (
     <>
       <Flex direction="column">
@@ -78,20 +118,40 @@ function SelectedMineral({ mineral }) {
         <Flex justifyContent="center">
           <CircularProgress
             value={sliderValue}
-            colorScheme="#c1c1c1"
-            size="
-            210.46px"
+            color={isBuying ? "teal" : "red"}
+            size="210.46px"
           >
             <CircularProgressLabel color="white">
               {sliderValue}
             </CircularProgressLabel>
           </CircularProgress>
         </Flex>
+        <Flex justifyContent="center" marginTop="20px">
+          <Stack direction="row">
+            <Switch
+              colorScheme={isBuying ? "teal" : "red"}
+              size="lg"
+              id="switch"
+              onChange={() => {
+                handleChange();
+              }}
+            />
+          </Stack>
+          <Button
+            colorScheme={isBuying ? "teal" : "red"}
+            size="md"
+            onClick={() => {
+              handleBuyOrSell();
+            }}
+          >
+            {isBuying ? "Buy" : "Sell"}
+          </Button>
+        </Flex>
         <Flex direction="row" marginTop="50px" width="80%" alignSelf="center">
           <Slider
             aria-label="slider-ex-6"
-            color="#00FCE2"
-            colorScheme="teal"
+            color={isBuying ? "teal" : "red"}
+            colorScheme={isBuying ? "teal" : "red"}
             max={
               //round function down to round the number to the nearest whole number
               // round function down to round the number to the nearest whole number
@@ -122,7 +182,7 @@ function SelectedMineral({ mineral }) {
             </SliderTrack>
 
             <SliderThumb boxSize={8}>
-              <Box color="teal" as={GiMineralPearls} />
+              <Box color={isBuying ? "teal" : "red"} as={GiMineralPearls} />
             </SliderThumb>
           </Slider>
         </Flex>
