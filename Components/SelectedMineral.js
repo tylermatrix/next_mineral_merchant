@@ -58,15 +58,18 @@ function SelectedMineral({ mineral: mineralFromArray }) {
         });
       }
     }
-    if (!isBuying) {
-      if (mineralToBuyOrSell.quantity >= sliderValue) {
+    if (!isBuying && mineralToBuyOrSell.amountOwned >= sliderValue) {
+      setPlayer({
+        ...player,
+        cash: player.cash + mineralToBuyOrSell.price * sliderValue,
+      });
+      if (mineralToBuyOrSell.amountOwned >= sliderValue) {
         setMineralToBuyOrSell({
           ...mineralToBuyOrSell,
-          quantity: mineralToBuyOrSell.quantity - sliderValue,
+          amountOwned: mineralToBuyOrSell.amountOwned - sliderValue,
         });
-        setPlayer({
-          ...player,
-          money: player.money + mineralFromArray.price * sliderValue,
+        setMineral({
+          ...setMineralToBuyOrSell,
         });
       }
     }
@@ -147,19 +150,30 @@ function SelectedMineral({ mineral: mineralFromArray }) {
             {isBuying ? "Buy" : "Sell"}
           </Button>
         </Flex>
-        <Flex direction="row" marginTop="50px" width="80%" alignSelf="center">
+
+        <Flex
+          direction="column"
+          marginTop="50px"
+          width="80%"
+          alignSelf="center"
+        >
+          <Text color="red">
+            {!isBuying && mineralToBuyOrSell.amountOwned < 1
+              ? "You have nothing to sell!"
+              : ""}
+          </Text>
           <Slider
             aria-label="slider-ex-6"
             color={isBuying ? "teal" : "red"}
             colorScheme={isBuying ? "teal" : "red"}
             max={
-              //round function down to round the number to the nearest whole number
-              // round function down to round the number to the nearest whole number
-              Math.floor(
-                player.cash / mineralToBuyOrSell.price > 100
-                  ? 100
-                  : player.cash / mineralToBuyOrSell.price
-              )
+              isBuying
+                ? Math.floor(
+                    player.cash / mineralToBuyOrSell.price > 100
+                      ? 100
+                      : player.cash / mineralToBuyOrSell.price
+                  )
+                : mineralToBuyOrSell.amountOwned
             }
             onChange={(val) => setSliderValue(val)}
           >
