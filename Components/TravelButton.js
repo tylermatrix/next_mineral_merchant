@@ -11,7 +11,6 @@ function TravelButton({ planetName = "planet" }) {
       <Flex
         height="100px"
         width="100px"
-        borderRadius="50%"
         background={
           planetName == selectedPlanet
             ? "linear-gradient(293.71deg, #00FCE2 32.27%, rgba(255, 255, 255, 0.87) 87.87%)"
@@ -24,7 +23,13 @@ function TravelButton({ planetName = "planet" }) {
         }}
         as={motion.div}
         whileTap={{ scale: 0.9 }}
+        whileHover={{
+          transition: { duration: 0.2 },
+          scale: 0.99,
+        }}
         cursor="pointer"
+        boxShadow=" -4px -4px 8px #646282, 6px 5px 15px #0A091A"
+        borderRadius="84.4988px"
       >
         <Flex
           height="80px"
@@ -35,7 +40,15 @@ function TravelButton({ planetName = "planet" }) {
           justifyContent="center"
           alignItems="center"
         >
-          <Text className="text">
+          <Text
+            color="#c1c1c1"
+            as={motion.div}
+            whileHover={{
+              transition: { duration: 0.2 },
+              scale: 1.2,
+              color: "#FFF",
+            }}
+          >
             {planetName == selectedPlanet ? "Current" : "Visit"}
           </Text>
         </Flex>

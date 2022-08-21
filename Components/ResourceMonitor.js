@@ -9,6 +9,7 @@ export default function ResourceMonitor() {
         height="481px"
         direction="column"
         bg="#353448"
+        boxShadow="4px 4px 18px #0A091A, -3px -3px 15px #646282"
         borderRadius="15px"
       >
         <Flex>

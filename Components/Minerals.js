@@ -16,7 +16,8 @@ export default function Minerals() {
           height="544px"
           direction="column"
           bg="#353448"
-          borderRadius="15px"
+          boxShadow="4px 4px 18px #0A091A, -3px -3px 15px #646282"
+          borderRadius="20px"
         >
           <SelectedMineral></SelectedMineral>
         </Flex>
@@ -26,6 +27,7 @@ export default function Minerals() {
           height="544px"
           direction="column"
           bg="#353448"
+          boxShadow="4px 4px 18px #0A091A, -3px -3px 15px #646282"
           borderRadius="15px"
         >
           <MineralList></MineralList>
