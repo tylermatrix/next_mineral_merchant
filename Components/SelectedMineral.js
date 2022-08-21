@@ -17,7 +17,8 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
-
+import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
+import { GiMineralPearls } from "react-icons/gi";
 function SelectedMineral({ mineral }) {
   const [mineralPicked, setMineralPicked] = useAtom(mineralPickedAtom);
   const [sliderValue, setSliderValue] = useState(50);
@@ -73,14 +74,28 @@ function SelectedMineral({ mineral }) {
             List
           </Text>
         </Flex>
-        <Flex direction="row" marginTop="150px" width="80%" alignSelf="center">
+
+        <Flex justifyContent="center">
+          <CircularProgress
+            value={sliderValue}
+            colorScheme="#c1c1c1"
+            size="
+            210.46px"
+          >
+            <CircularProgressLabel color="white">
+              {sliderValue}
+            </CircularProgressLabel>
+          </CircularProgress>
+        </Flex>
+        <Flex direction="row" marginTop="50px" width="80%" alignSelf="center">
           <Slider
             aria-label="slider-ex-6"
             color="#00FCE2"
             colorScheme="teal"
             max={
-              //round function to round the number to the nearest whole number
-              Math.round(
+              //round function down to round the number to the nearest whole number
+              // round function down to round the number to the nearest whole number
+              Math.floor(
                 player.cash / mineralToBuyOrSell.price > 100
                   ? 100
                   : player.cash / mineralToBuyOrSell.price
@@ -88,30 +103,27 @@ function SelectedMineral({ mineral }) {
             }
             onChange={(val) => setSliderValue(val)}
           >
-            {/* <SliderMark value={25} {...labelStyles}>
-              25
-            </SliderMark>
-            <SliderMark value={50} {...labelStyles}>
-              50
-            </SliderMark>
-            <SliderMark value={75} {...labelStyles}>
-              75
-            </SliderMark> */}
             <SliderMark
-              value={sliderValue}
-              textAlign="center"
-              bg="#00FCE2"
-              color="white"
-              mt="-10"
-              ml="-5"
-              w="12"
+              value={Math.floor(
+                player.cash / mineralToBuyOrSell.price > 100
+                  ? 50
+                  : player.cash / mineralToBuyOrSell.price / 2
+              )}
+              {...labelStyles}
             >
-              {sliderValue}
+              {Math.floor(
+                player.cash / mineralToBuyOrSell.price > 100
+                  ? 50
+                  : player.cash / mineralToBuyOrSell.price / 2
+              )}
             </SliderMark>
             <SliderTrack>
               <SliderFilledTrack />
             </SliderTrack>
-            <SliderThumb />
+
+            <SliderThumb boxSize={8}>
+              <Box color="teal" as={GiMineralPearls} />
+            </SliderThumb>
           </Slider>
         </Flex>
 
