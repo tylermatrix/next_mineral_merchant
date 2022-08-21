@@ -63,7 +63,7 @@ export const mineralAtom = atom([
   },
 ]);
 
-export const playerAtom = atom({ cash: 2000, debt: 2001, daysPlayer: 0 });
+export const playerAtom = atom({ cash: 2000, debt: 2001, daysPlayed: 0 });
 
 export const planetAtom = atom([
   { name: "Fitzgerald 5" },
@@ -77,3 +77,32 @@ export const planetAtom = atom([
 export const selectedPlanetAtom = atom("Fitzgerald 5");
 export const mineralPickedAtom = atom("");
 export const selectedMineralAtom = atom(false);
+
+export const breakingGoodNewsAtom = atom([
+  {
+    mineralName: "Jadeenic",
+    msg: "Luck of the Irish!",
+    id: 0,
+    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
+  },
+  {
+    mineralName: "Jadeenic",
+    msg: "2!",
+    id: 1,
+    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
+  },
+  {
+    mineralName: "Jadeenic",
+    msg: "3!",
+    id: 2,
+    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
+  },
+  {
+    mineralName: "Jadeenic",
+    msg: "4!",
+    id: 3,
+    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
+  },
+]);
+
+export const dayAtom = atom(0);
