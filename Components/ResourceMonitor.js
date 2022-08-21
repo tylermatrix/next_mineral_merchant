@@ -1,7 +1,18 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { useAtom } from "jotai";
+import {
+  dayAtom,
+  playerAtom,
+  planetAtom,
+  selectedPlanetAtom,
+} from "../state/GlobalState";
 import ResourceItem from "./ResourceItem";
 export default function ResourceMonitor() {
+  const [day, setDay] = useAtom(dayAtom);
+  const [player, setPlayer] = useAtom(playerAtom);
+  const [selectedPlanet, setSelectedPlanet] = useAtom(selectedPlanetAtom);
+
   return (
     <>
       <Flex
@@ -25,10 +36,10 @@ export default function ResourceMonitor() {
             Resource Monitor
           </Text>
         </Flex>
-        <ResourceItem resource="PLANET"></ResourceItem>
-        <ResourceItem resource="CASH"></ResourceItem>
-        <ResourceItem resource="DEBT"></ResourceItem>
-        <ResourceItem resource="DAYS"></ResourceItem>
+        <ResourceItem resource="PLANET">{selectedPlanet}</ResourceItem>
+        <ResourceItem resource="CASH">{player.cash}</ResourceItem>
+        <ResourceItem resource="DEBT">{player.debt}</ResourceItem>
+        <ResourceItem resource="DAYS">{day}</ResourceItem>
       </Flex>
     </>
   );

@@ -4,6 +4,8 @@ import {
   mineralAtom,
   mineralSelectedAtom,
   mineralPickedAtom,
+  mineralToBuyOrSellAtom,
+  playerAtom,
 } from "../state/GlobalState";
 import { Flex, Text, Image, Box } from "@chakra-ui/react";
 import {
@@ -16,9 +18,13 @@ import {
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-function SelectedMineral(mineral) {
+function SelectedMineral({ mineral }) {
   const [mineralPicked, setMineralPicked] = useAtom(mineralPickedAtom);
   const [sliderValue, setSliderValue] = useState(50);
+  const [player, setPlayer] = useAtom(playerAtom);
+  const [mineralToBuyOrSell, setMineralToBuyOrSell] = useAtom(
+    mineralToBuyOrSellAtom
+  );
 
   const labelStyles = {
     mt: "2",
@@ -38,7 +44,7 @@ function SelectedMineral(mineral) {
             color="#C1C1C1"
             margin="25px"
           >
-            {mineralPicked}
+            {mineralToBuyOrSell.name}
           </Text>
 
           <Text
@@ -54,10 +60,12 @@ function SelectedMineral(mineral) {
             borderRadius="20px"
             width="91.06px"
             height="39.3px"
-            box-shadow="4px 4px 18px #0A091A, -3px -3px 9px #646282"
+            boxShadow="4px 4px 18px #0A091A, -3px -3px 9px #646282"
             justifyContent="center"
             alignItems="center"
             cursor="pointer"
+            as={motion.div}
+            whileHover={{ scale: 0.99 }}
             onClick={() => {
               setMineralPicked("");
             }}
@@ -70,9 +78,17 @@ function SelectedMineral(mineral) {
             aria-label="slider-ex-6"
             color="#00FCE2"
             colorScheme="teal"
+            max={
+              //round function to round the number to the nearest whole number
+              Math.round(
+                player.cash / mineralToBuyOrSell.price > 100
+                  ? 100
+                  : player.cash / mineralToBuyOrSell.price
+              )
+            }
             onChange={(val) => setSliderValue(val)}
           >
-            <SliderMark value={25} {...labelStyles}>
+            {/* <SliderMark value={25} {...labelStyles}>
               25
             </SliderMark>
             <SliderMark value={50} {...labelStyles}>
@@ -80,7 +96,7 @@ function SelectedMineral(mineral) {
             </SliderMark>
             <SliderMark value={75} {...labelStyles}>
               75
-            </SliderMark>
+            </SliderMark> */}
             <SliderMark
               value={sliderValue}
               textAlign="center"
@@ -97,6 +113,11 @@ function SelectedMineral(mineral) {
             </SliderTrack>
             <SliderThumb />
           </Slider>
+        </Flex>
+
+        <Flex marginTop="40px" direction="column">
+          <Text>Current Amount: {mineralToBuyOrSell.amountOwned}</Text>
+          <Text>Current Price: {mineralToBuyOrSell.price}</Text>
         </Flex>
       </Flex>
     </>

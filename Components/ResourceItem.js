@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
 
 import { motion } from "framer-motion";
-function ResourceItem({ resource }) {
+function ResourceItem({ resource, children }) {
   return (
     <>
       <Flex
@@ -33,14 +33,19 @@ function ResourceItem({ resource }) {
           {resource}
         </Text>
 
-        <Text
+        <Flex
           width="60%"
           height="46px"
+          alignItems="center"
+          justifyContent="center"
           background="#53526B"
           boxShadow="-3px -3px 9px #646282, inset 4px 4px 18px #0A091A"
           borderRadius="20px"
-          alignSelf="center"
-        ></Text>
+        >
+          <Text textAlign="" color="#C1C1C1">
+            {children}
+          </Text>
+        </Flex>
       </Flex>
     </>
   );

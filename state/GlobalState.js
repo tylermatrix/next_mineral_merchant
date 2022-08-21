@@ -5,7 +5,7 @@ export const mineralAtom = atom([
     id: 0,
     name: "Lizac",
     price: 1090,
-    amountOwned: 0,
+    amountOwned: 4,
     description: "This is a mineral",
     currentMineral: false,
     image:
@@ -25,7 +25,7 @@ export const mineralAtom = atom([
     id: 2,
     name: "Motuesia",
     price: 12123,
-    amountOwned: 0,
+    amountOwned: 3,
     description: "This is a mineral",
     currentMineral: false,
     image:
@@ -55,7 +55,7 @@ export const mineralAtom = atom([
     id: 5,
     name: "Mendrazalite",
     price: 10,
-    amountOwned: 0,
+    amountOwned: 1,
     description: "This is a mineral",
     currentMineral: false,
     image:
@@ -63,7 +63,7 @@ export const mineralAtom = atom([
   },
 ]);
 
-export const playerAtom = atom({ cash: 2000, debt: 2001, daysPlayed: 0 });
+export const playerAtom = atom({ cash: 2000, debt: 2001 });
 
 export const planetAtom = atom([
   { name: "Fitzgerald 5" },
@@ -77,6 +77,7 @@ export const planetAtom = atom([
 export const selectedPlanetAtom = atom("Fitzgerald 5");
 export const mineralPickedAtom = atom("");
 export const selectedMineralAtom = atom(false);
+export const mineralToBuyOrSellAtom = atom({});
 
 export const breakingGoodNewsAtom = atom([
   {

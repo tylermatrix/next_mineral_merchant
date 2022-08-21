@@ -6,6 +6,7 @@ import {
   mineralAtom,
   selectedMineralAtom,
   mineralPickedAtom,
+  mineralToBuyOrSellAtom,
 } from "../state/GlobalState";
 
 import { motion } from "framer-motion";
@@ -13,8 +14,12 @@ function MineralList() {
   const [mineralPicked, setMineralPicked] = useAtom(mineralPickedAtom);
   const [minerals, setMinerals] = useAtom(mineralAtom);
   const [mineralSelected, setSelectedMineral] = useAtom(selectedMineralAtom);
+  const [mineralToBuyOrSell, setMineralToBuyOrSell] = useAtom(
+    mineralToBuyOrSellAtom
+  );
   const handleClick = (mineral) => {
     setMineralPicked(mineral.name);
+    setMineralToBuyOrSell(mineral);
     setSelectedMineral(true);
   };
   return (
@@ -27,6 +32,7 @@ function MineralList() {
         lineHeight="38px"
         color="#C1C1C1"
         margin="25px"
+        width="100%"
       >
         Mineral
       </Text>
@@ -38,14 +44,14 @@ function MineralList() {
           as={motion.div}
           whileHover={{ scale: 0.99 }}
           cursor="pointer"
+          justifyContent="space-between"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { delay: index * 0.1 } }}
           onClick={() => {
             handleClick(mineral);
-            console.log(mineralSelected);
           }}
         >
-          <Flex marginLeft="20px">
+          <Flex marginLeft="20px" width="160px">
             <Image
               src={mineral.image}
               alt="mineral image"
@@ -62,6 +68,8 @@ function MineralList() {
               {mineral.name}
             </Text>
           </Flex>
+          <Text color="white">{mineral.amountOwned}</Text>
+          <Text color="white">{mineral.price}</Text>
         </Flex>
       ))}
       {/*
