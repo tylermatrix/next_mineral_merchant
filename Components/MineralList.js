@@ -2,11 +2,21 @@ import React from "react";
 import { Flex, Text, Image } from "@chakra-ui/react";
 
 import { useAtom } from "jotai";
-import { mineralAtom } from "../state/GlobalState";
+import {
+  mineralAtom,
+  selectedMineralAtom,
+  mineralPickedAtom,
+} from "../state/GlobalState";
 
 import { motion } from "framer-motion";
 function MineralList() {
+  const [mineralPicked, setMineralPicked] = useAtom(mineralPickedAtom);
   const [minerals, setMinerals] = useAtom(mineralAtom);
+  const [mineralSelected, setSelectedMineral] = useAtom(selectedMineralAtom);
+  const handleClick = (mineral) => {
+    setMineralPicked(mineral.name);
+    setSelectedMineral(true);
+  };
   return (
     <>
       <Text
@@ -28,6 +38,10 @@ function MineralList() {
           as={motion.div}
           whileHover={{ scale: 0.99 }}
           cursor="pointer"
+          onClick={() => {
+            handleClick(mineral);
+            console.log(mineralSelected);
+          }}
         >
           <Flex marginLeft="20px">
             <Image
@@ -41,7 +55,7 @@ function MineralList() {
               color="#C1C1C1"
               marginLeft="30px"
               as={motion.div}
-              whileHover={{ color: "white" }}
+              whileHover={{ color: "#FFF" }}
             >
               {mineral.name}
             </Text>
