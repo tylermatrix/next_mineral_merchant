@@ -88,7 +88,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
             color="#C1C1C1"
             margin="25px"
           >
-            {mineralToBuyOrSell.name}
+            {mineralToBuyOrSell.name} @ ${mineralToBuyOrSell.price}
           </Text>
 
           <Text
@@ -202,8 +202,9 @@ function SelectedMineral({ mineral: mineralFromArray }) {
         </Flex>
 
         <Flex marginTop="40px" direction="column">
-          <Text>Current Amount: {mineralToBuyOrSell.amountOwned}</Text>
-          <Text>Current Price: {mineralToBuyOrSell.price}</Text>
+          <Text color="white">
+            Current Amount: {mineralToBuyOrSell.amountOwned}
+          </Text>
         </Flex>
       </Flex>
     </>
