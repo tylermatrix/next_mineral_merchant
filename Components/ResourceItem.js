@@ -28,13 +28,13 @@ function ResourceItem({ resource }) {
           color="#C1C1C1"
           alignSelf="center"
           as={motion.div}
-          whileHover={{ color: "white" }}
+          whileHover={{ color: "#FFFFFF" }}
         >
           {resource}
         </Text>
 
         <Text
-          width="131px"
+          width="60%"
           height="46px"
           background="#53526B"
           boxShadow="-3px -3px 9px #646282, inset 4px 4px 18px #0A091A"

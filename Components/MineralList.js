@@ -30,7 +30,7 @@ function MineralList() {
       >
         Mineral
       </Text>
-      {minerals.map((mineral) => (
+      {minerals.map((mineral, index) => (
         <Flex
           backgroundColor="rgb(255, 255, 255, 0.1)"
           key={mineral.id}
@@ -38,6 +38,8 @@ function MineralList() {
           as={motion.div}
           whileHover={{ scale: 0.99 }}
           cursor="pointer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { delay: index * 0.1 } }}
           onClick={() => {
             handleClick(mineral);
             console.log(mineralSelected);
