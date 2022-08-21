@@ -62,4 +62,4 @@ export const planetAtom = atom([
   { name: "Utopia" },
 ]);
 
-export const selectedPlanetAtom = atom({ name: "Fitzgerald 5" });
+export const selectedPlanetAtom = atom("Fitzgerald 5");
