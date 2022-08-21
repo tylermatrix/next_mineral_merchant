@@ -3,32 +3,11 @@ import { Text } from "@chakra-ui/react";
 import { Flex } from "@chakra-ui/react";
 import { useAtom } from "jotai";
 import { selectedPlanetAtom } from "../state/GlobalState";
-
+import { motion } from "framer-motion";
 function TravelButton({ planetName = "planet" }) {
   const [selectedPlanet, setSelectedPlanet] = useAtom(selectedPlanetAtom);
   return (
-    // <div>
-    //   <div
-    //     className="travelButton"
-    //     onClick={() => {
-    //       setSelectedPlanet(planetName);
-    //     }}
-    //   >
-    //     <div className="travelButtonText">
-    //       <div
-    //         className={
-    //           "circle" + " " + (planetName == selectedPlanet ? "active" : null)
-    //         }
-    //       >
-    //         <Text className="text">
-    //           {planetName == selectedPlanet ? "Here" : "Visit"}
-    //         </Text>
-    //       </div>
-    //     </div>
-    //     <h4 className="text">{planetName}</h4>
-    //   </div>
-    // </div>
-    <Flex direction="column" gap="8.6px" fontFamily={"Poppins"}>
+    <Flex direction="column" gap="8.6px">
       <Flex
         height="100px"
         width="100px"
@@ -43,6 +22,9 @@ function TravelButton({ planetName = "planet" }) {
         onClick={() => {
           setSelectedPlanet(planetName);
         }}
+        as={motion.div}
+        whileTap={{ scale: 0.9 }}
+        cursor="pointer"
       >
         <Flex
           height="80px"
@@ -54,7 +36,7 @@ function TravelButton({ planetName = "planet" }) {
           alignItems="center"
         >
           <Text className="text">
-            {planetName == selectedPlanet ? "Here" : "Visit"}
+            {planetName == selectedPlanet ? "Current" : "Visit"}
           </Text>
         </Flex>
       </Flex>

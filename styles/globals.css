@@ -16,13 +16,6 @@ a {
 }
 
 /* Start of Travel Component */
-.h1Travel {
-  font-size: 2rem;
-  font-weight: bold;
-  color: white;
-  margin-left: 2rem;
-  margin-top: 1rem;
-}
 .row {
   display: flex;
   justify-content: space-evenly;

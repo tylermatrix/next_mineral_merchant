@@ -3,11 +3,13 @@ import { atom } from "jotai";
 export const mineralAtom = atom([
   {
     id: 0,
-    name: "Jadeenic",
+    name: "Lizac",
     price: 1090,
     amountOwned: 0,
     description: "This is a mineral",
     currentMineral: false,
+    image:
+      "https://cdn.pixabay.com/photo/2016/06/24/09/14/glass-1476909_960_720.jpg",
   },
   {
     id: 1,
@@ -16,6 +18,8 @@ export const mineralAtom = atom([
     amountOwned: 0,
     description: "This is a mineral",
     currentMineral: false,
+    image:
+      "https://cdn.pixabay.com/photo/2016/06/17/00/34/glass-1462395_960_720.jpg",
   },
   {
     id: 2,
@@ -24,6 +28,8 @@ export const mineralAtom = atom([
     amountOwned: 0,
     description: "This is a mineral",
     currentMineral: false,
+    image:
+      "https://cdn.pixabay.com/photo/2016/08/18/17/35/rock-crystal-1603474_960_720.jpg",
   },
   {
     id: 3,
@@ -32,14 +38,18 @@ export const mineralAtom = atom([
     amountOwned: 0,
     description: "This is a mineral",
     currentMineral: false,
+    image:
+      "https://cdn.pixabay.com/photo/2014/01/03/16/29/rock-crystal-238075_960_720.jpg",
   },
   {
     id: 4,
-    name: "Lizac",
+    name: "Jadeenic",
     price: 555,
     amountOwned: 0,
     description: "This is a mineral",
     currentMineral: false,
+    image:
+      "https://cdn.pixabay.com/photo/2016/08/16/17/31/fluorite-1598472_960_720.jpg",
   },
   {
     id: 5,
@@ -48,6 +58,8 @@ export const mineralAtom = atom([
     amountOwned: 0,
     description: "This is a mineral",
     currentMineral: false,
+    image:
+      "https://cdn.pixabay.com/photo/2016/08/18/17/34/rock-crystal-1603469_960_720.jpg",
   },
 ]);
 
