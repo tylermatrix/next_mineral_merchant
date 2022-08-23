@@ -107,3 +107,4 @@ export const breakingGoodNewsAtom = atom([
 ]);
 
 export const dayAtom = atom(0);
+export const mineralIDAtom = atom(0);

@@ -7,6 +7,7 @@ import {
   selectedMineralAtom,
   mineralPickedAtom,
   mineralToBuyOrSellAtom,
+  mineralIDAtom,
 } from "../state/GlobalState";
 
 import { motion } from "framer-motion";
@@ -17,10 +18,13 @@ function MineralList() {
   const [mineralToBuyOrSell, setMineralToBuyOrSell] = useAtom(
     mineralToBuyOrSellAtom
   );
-  const handleClick = (mineral) => {
-    setMineralPicked(mineral.name);
-    setMineralToBuyOrSell(mineral);
+  const [mineralID, setMineralID] = useAtom(mineralIDAtom);
+
+  const handleClick = (id) => {
+    setMineralPicked(true);
     setSelectedMineral(true);
+    setMineralID(id);
+    // setMineralToBuyOrSell(mineral);
   };
   return (
     <>
@@ -48,7 +52,7 @@ function MineralList() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { delay: index * 0.1 } }}
           onClick={() => {
-            handleClick(mineralFromArray);
+            handleClick(mineralFromArray.id);
           }}
         >
           <Flex marginLeft="20px" width="160px">

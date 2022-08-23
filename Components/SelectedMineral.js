@@ -21,21 +21,23 @@ import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { GiMineralPearls } from "react-icons/gi";
 import { Switch, Stack } from "@chakra-ui/react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
+import { mineralIDAtom } from "../state/GlobalState";
+
 function SelectedMineral({ mineral: mineralFromArray }) {
   const [mineralPicked, setMineralPicked] = useAtom(mineralPickedAtom);
   const [sliderValue, setSliderValue] = useState(50);
   const [player, setPlayer] = useAtom(playerAtom);
   const [mineral, setMineral] = useAtom(mineralAtom);
-  const [mineralToBuyOrSell, setMineralToBuyOrSell] = useAtom(
-    mineralToBuyOrSellAtom
-  );
-  const [isBuying, setIsBuying] = useState(false);
 
+  const [isBuying, setIsBuying] = useState(false);
+  const [mineralID, setMineralID] = useAtom(mineralIDAtom);
   const labelStyles = {
     mt: "2",
     ml: "-2.5",
     fontSize: "sm",
   };
+
+  const currentMineral = mineral.find((m) => m.id === mineralID);
 
   const handleChange = (e) => {
     setIsBuying((isBuying = !isBuying));
@@ -44,33 +46,26 @@ function SelectedMineral({ mineral: mineralFromArray }) {
   const handleBuyOrSell = () => {
     // create function to buy or sell mineral based on buy or sell state and mineral selected and player money and mineral price and mineral quantity from slider value
     if (isBuying) {
-      if (player.cash >= mineralToBuyOrSell.price * sliderValue) {
+      if (player.cash >= currentMineral.price * sliderValue) {
         setPlayer({
           ...player,
-          cash: player.cash - mineralToBuyOrSell.price * sliderValue,
+          cash: player.cash - currentMineral.price * sliderValue,
         });
-        setMineralToBuyOrSell({
-          ...mineralToBuyOrSell,
-          amountOwned: mineralToBuyOrSell.amountOwned + sliderValue,
-        });
-        setMineral({
-          ...setMineralToBuyOrSell,
-        });
+
+        const copyMineral = [...mineral];
+        copyMineral[mineralID].amountOwned += sliderValue;
+        setMineral(copyMineral);
       }
     }
-    if (!isBuying && mineralToBuyOrSell.amountOwned >= sliderValue) {
+    if (!isBuying && currentMineral.amountOwned >= sliderValue) {
       setPlayer({
         ...player,
-        cash: player.cash + mineralToBuyOrSell.price * sliderValue,
+        cash: player.cash + currentMineral.price * sliderValue,
       });
-      if (mineralToBuyOrSell.amountOwned >= sliderValue) {
-        setMineralToBuyOrSell({
-          ...mineralToBuyOrSell,
-          amountOwned: mineralToBuyOrSell.amountOwned - sliderValue,
-        });
-        setMineral({
-          ...setMineralToBuyOrSell,
-        });
+      if (currentMineral.amountOwned >= sliderValue) {
+        const copyMineral = [...mineral];
+        copyMineral[mineralID].amountOwned -= sliderValue;
+        setMineral(copyMineral);
       }
     }
   };
@@ -88,7 +83,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
             color="#C1C1C1"
             margin="25px"
           >
-            {mineralToBuyOrSell.name} @ ${mineralToBuyOrSell.price}
+            {currentMineral.name} @ ${currentMineral.price}
           </Text>
 
           <Text
@@ -158,7 +153,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
           alignSelf="center"
         >
           <Text color="red">
-            {!isBuying && mineralToBuyOrSell.amountOwned < 1
+            {!isBuying && currentMineral.amountOwned < 1
               ? "You have nothing to sell!"
               : ""}
           </Text>
@@ -169,26 +164,26 @@ function SelectedMineral({ mineral: mineralFromArray }) {
             max={
               isBuying
                 ? Math.floor(
-                    player.cash / mineralToBuyOrSell.price > 100
+                    player.cash / currentMineral.price > 100
                       ? 100
-                      : player.cash / mineralToBuyOrSell.price
+                      : player.cash / currentMineral.price
                   )
-                : mineralToBuyOrSell.amountOwned
+                : currentMineral.amountOwned
             }
             onChange={(val) => setSliderValue(val)}
           >
             <SliderMark
               value={Math.floor(
-                player.cash / mineralToBuyOrSell.price > 100
+                player.cash / currentMineral.price > 100
                   ? 50
-                  : player.cash / mineralToBuyOrSell.price / 2
+                  : player.cash / currentMineral.price / 2
               )}
               {...labelStyles}
             >
               {Math.floor(
-                player.cash / mineralToBuyOrSell.price > 100
+                player.cash / currentMineral.price > 100
                   ? 50
-                  : player.cash / mineralToBuyOrSell.price / 2
+                  : player.cash / currentMineral.price / 2
               )}
             </SliderMark>
             <SliderTrack>
@@ -203,7 +198,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
 
         <Flex marginTop="40px" direction="column">
           <Text color="white">
-            Current Amount: {mineralToBuyOrSell.amountOwned}
+            Current Amount: {currentMineral.amountOwned}
           </Text>
         </Flex>
       </Flex>

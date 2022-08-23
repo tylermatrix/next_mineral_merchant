@@ -2,12 +2,21 @@ import React from "react";
 import { Text } from "@chakra-ui/react";
 import { Flex } from "@chakra-ui/react";
 import { useAtom } from "jotai";
-import { selectedPlanetAtom, dayAtom } from "../state/GlobalState";
+import { selectedPlanetAtom, dayAtom, mineralAtom } from "../state/GlobalState";
 import { motion } from "framer-motion";
 
 function TravelButton({ planetName = "planet" }) {
   const [selectedPlanet, setSelectedPlanet] = useAtom(selectedPlanetAtom);
+  const [mineral, setMineral] = useAtom(mineralAtom);
   const [day, setDay] = useAtom(dayAtom);
+  const handleClick = () => {
+    setSelectedPlanet(planetName);
+    setDay(day + 1);
+    mineral.forEach((min) => {
+      min.price = Math.floor(min.price * (1.3 - 0.1) * Math.random() + 1);
+      setMineral([...mineral], min);
+    });
+  };
 
   return (
     <Flex direction="column" gap="8.6px">
@@ -22,8 +31,7 @@ function TravelButton({ planetName = "planet" }) {
         justifyContent="center"
         alignItems="center"
         onClick={() => {
-          setSelectedPlanet(planetName);
-          setDay(day + 1);
+          handleClick();
         }}
         as={motion.div}
         whileTap={{ scale: 0.9 }}
