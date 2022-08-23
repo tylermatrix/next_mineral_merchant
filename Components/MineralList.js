@@ -24,8 +24,8 @@ function MineralList() {
     setMineralPicked(true);
     setSelectedMineral(true);
     setMineralID(id);
-    // setMineralToBuyOrSell(mineral);
   };
+
   return (
     <>
       <Text
@@ -37,27 +37,37 @@ function MineralList() {
         color="#C1C1C1"
         margin="25px"
         width="100%"
+        as={motion.div}
+        whileHover={{ scale: 0.99, color: "#fff" }}
       >
         Mineral
       </Text>
-      {minerals.map((mineralFromArray, index) => (
+      {minerals.map((min, index) => (
         <Flex
-          backgroundColor="rgb(255, 255, 255, 0.1)"
-          key={mineralFromArray.id}
-          marginBottom="15px"
+          width="90%"
+          height="65px"
+          background="#37364C"
+          boxShadow="4px 4px 18px #0A091A, -3px -3px 9px #646282"
+          borderRadius="20px"
+          justifyContent="space-evenly"
+          alignItems="center"
+          marginTop="25px"
+          alignSelf="center"
           as={motion.div}
           whileHover={{ scale: 0.99 }}
           cursor="pointer"
-          justifyContent="space-between"
+          backgroundColor="rgb(255, 255, 255, 0.1)"
+          key={min.id}
+          marginBottom="15px"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { delay: index * 0.1 } }}
           onClick={() => {
-            handleClick(mineralFromArray.id);
+            handleClick(min.id);
           }}
         >
           <Flex marginLeft="20px" width="160px">
             <Image
-              src={mineralFromArray.image}
+              src={min.image}
               alt="mineral image"
               height="38px"
               width="38px"
@@ -69,11 +79,13 @@ function MineralList() {
               as={motion.div}
               whileHover={{ color: "#FFF" }}
             >
-              {mineralFromArray.name}
+              {min.name}
             </Text>
           </Flex>
-          <Text color="white">{mineralFromArray.amountOwned}</Text>
-          <Text color="white">{mineralFromArray.price}</Text>
+          <Text color="white">{min.amountOwned}</Text>
+          <Text color="white" marginRight="10px">
+            {min.changedPrice ? min.changedPrice : min.startingPrice}
+          </Text>
         </Flex>
       ))}
       {/*

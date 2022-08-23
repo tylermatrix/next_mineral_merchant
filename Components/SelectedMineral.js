@@ -25,7 +25,7 @@ import { mineralIDAtom } from "../state/GlobalState";
 
 function SelectedMineral({ mineral: mineralFromArray }) {
   const [mineralPicked, setMineralPicked] = useAtom(mineralPickedAtom);
-  const [sliderValue, setSliderValue] = useState(50);
+  const [sliderValue, setSliderValue] = useState(0);
   const [player, setPlayer] = useAtom(playerAtom);
   const [mineral, setMineral] = useAtom(mineralAtom);
 
@@ -46,10 +46,10 @@ function SelectedMineral({ mineral: mineralFromArray }) {
   const handleBuyOrSell = () => {
     // create function to buy or sell mineral based on buy or sell state and mineral selected and player money and mineral price and mineral quantity from slider value
     if (isBuying) {
-      if (player.cash >= currentMineral.price * sliderValue) {
+      if (player.cash >= currentMineral.startingPrice * sliderValue) {
         setPlayer({
           ...player,
-          cash: player.cash - currentMineral.price * sliderValue,
+          cash: player.cash - currentMineral.startingPrice * sliderValue,
         });
 
         const copyMineral = [...mineral];
@@ -60,7 +60,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
     if (!isBuying && currentMineral.amountOwned >= sliderValue) {
       setPlayer({
         ...player,
-        cash: player.cash + currentMineral.price * sliderValue,
+        cash: player.cash + currentMineral.startingPrice * sliderValue,
       });
       if (currentMineral.amountOwned >= sliderValue) {
         const copyMineral = [...mineral];
@@ -83,7 +83,10 @@ function SelectedMineral({ mineral: mineralFromArray }) {
             color="#C1C1C1"
             margin="25px"
           >
-            {currentMineral.name} @ ${currentMineral.price}
+            {currentMineral.name} @ $
+            {currentMineral.changedPrice
+              ? currentMineral.changedPrice
+              : currentMineral.startingPrice}
           </Text>
 
           <Text
@@ -164,9 +167,9 @@ function SelectedMineral({ mineral: mineralFromArray }) {
             max={
               isBuying
                 ? Math.floor(
-                    player.cash / currentMineral.price > 100
+                    player.cash / currentMineral.startingPrice > 100
                       ? 100
-                      : player.cash / currentMineral.price
+                      : player.cash / currentMineral.startingPrice
                   )
                 : currentMineral.amountOwned
             }
@@ -174,16 +177,16 @@ function SelectedMineral({ mineral: mineralFromArray }) {
           >
             <SliderMark
               value={Math.floor(
-                player.cash / currentMineral.price > 100
+                player.cash / currentMineral.startingPrice > 100
                   ? 50
-                  : player.cash / currentMineral.price / 2
+                  : player.cash / currentMineral.startingPrice / 2
               )}
               {...labelStyles}
             >
               {Math.floor(
-                player.cash / currentMineral.price > 100
+                player.cash / currentMineral.startingPrice > 100
                   ? 50
-                  : player.cash / currentMineral.price / 2
+                  : player.cash / currentMineral.startingPrice / 2
               )}
             </SliderMark>
             <SliderTrack>

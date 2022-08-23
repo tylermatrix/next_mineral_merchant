@@ -29,7 +29,19 @@ export default function News() {
       initial={{ y: -200 }}
       animate={{ y: 0 }}
     >
-      <h1 className="h1News">Breaking News</h1>
+      <Text
+        fontFamily="Poppins"
+        fontStyle="normal"
+        fontWeight="600"
+        fontSize="25px"
+        lineHeight="38px"
+        color="#C1C1C1"
+        margin="25px"
+        as={motion.div}
+        whileHover={{ scale: 0.99, color: "#fff" }}
+      >
+        Breaking News
+      </Text>
       <NewsItem newsItem={breakingNewsItem} id={breakingNewsItem.id} />
     </Flex>
   );

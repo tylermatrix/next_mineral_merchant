@@ -6,7 +6,10 @@ function NewsItem({ newsItem, id }) {
   return (
     <>
       <Flex
+        borderRadius="20px"
         className="event"
+        bg="#a1a"
+        opacity="0.8"
         as={motion.div}
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

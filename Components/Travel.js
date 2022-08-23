@@ -2,6 +2,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import TravelButton from "./TravelButton";
 import { atom, useAtom } from "jotai";
 import { planetAtom } from "../state/GlobalState";
+import { motion } from "framer-motion";
 export default function Travel() {
   const [planets, setPlanets] = useAtom(planetAtom);
 
@@ -22,6 +23,8 @@ export default function Travel() {
         lineHeight="38px"
         color="#C1C1C1"
         margin="25px"
+        as={motion.div}
+        whileHover={{ scale: 0.99, color: "#fff" }}
       >
         Travel
       </Text>
