@@ -1,4 +1,4 @@
-import { Flex, Text, Image, useFocusEffect } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { breakingGoodNewsAtom } from "../state/GlobalState";
 import { useAtom } from "jotai";
 import { dayAtom } from "../state/GlobalState";
@@ -9,6 +9,7 @@ import NewsItem from "./NewsItem";
 export default function News() {
   const [breakingGoodNews, setBreakingGoodNews] = useAtom(breakingGoodNewsAtom);
   const [breakingNewsItem, setBreakingNewsItem] = useState([]);
+
   const [day, setDay] = useAtom(dayAtom);
 
   useEffect(() => {
@@ -16,7 +17,6 @@ export default function News() {
     setBreakingNewsItem(breakingGoodNews[randomIndex]);
   }, [breakingGoodNews, day]);
 
-  const newsItems = [];
   return (
     <Flex
       minW="387px"

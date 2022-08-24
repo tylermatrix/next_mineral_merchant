@@ -2,9 +2,7 @@ import React from "react";
 import { useAtom } from "jotai";
 import {
   mineralAtom,
-  mineralSelectedAtom,
   mineralPickedAtom,
-  mineralToBuyOrSellAtom,
   playerAtom,
 } from "../state/GlobalState";
 import { Flex, Text, Image, Box } from "@chakra-ui/react";

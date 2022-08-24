@@ -1,12 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useAtom } from "jotai";
-import {
-  dayAtom,
-  playerAtom,
-  planetAtom,
-  selectedPlanetAtom,
-} from "../state/GlobalState";
+import { dayAtom, playerAtom, selectedPlanetAtom } from "../state/GlobalState";
 import ResourceItem from "./ResourceItem";
 export default function ResourceMonitor() {
   const [day, setDay] = useAtom(dayAtom);

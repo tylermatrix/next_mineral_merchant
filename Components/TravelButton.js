@@ -2,17 +2,11 @@ import React from "react";
 import { Text } from "@chakra-ui/react";
 import { Flex } from "@chakra-ui/react";
 import { useAtom } from "jotai";
-import {
-  selectedPlanetAtom,
-  dayAtom,
-  mineralAtom,
-  mineralCopyAtom,
-} from "../state/GlobalState";
+import { selectedPlanetAtom, dayAtom, mineralAtom } from "../state/GlobalState";
 import { motion } from "framer-motion";
 
 function TravelButton({ planetName = "planet" }) {
   const [selectedPlanet, setSelectedPlanet] = useAtom(selectedPlanetAtom);
-  const [mineralCopy, setMineralCopy] = useAtom(mineralCopyAtom);
   const [mineral, setMineral] = useAtom(mineralAtom);
   const [day, setDay] = useAtom(dayAtom);
   const handleClick = () => {

@@ -1,6 +1,5 @@
 import React from "react";
 import { Flex, Text, Image } from "@chakra-ui/react";
-
 import { useAtom } from "jotai";
 import {
   mineralAtom,
