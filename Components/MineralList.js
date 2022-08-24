@@ -37,7 +37,7 @@ function MineralList() {
         margin="25px"
         width="100%"
         as={motion.div}
-        whileHover={{ scale: 0.99, color: "#fff" }}
+        whileHover={{ color: "#fff" }}
       >
         Mineral
       </Text>

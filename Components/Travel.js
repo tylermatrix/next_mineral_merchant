@@ -24,7 +24,7 @@ export default function Travel() {
         color="#C1C1C1"
         margin="25px"
         as={motion.div}
-        whileHover={{ scale: 0.99, color: "#fff" }}
+        whileHover={{ color: "#fff" }}
       >
         Travel
       </Text>
