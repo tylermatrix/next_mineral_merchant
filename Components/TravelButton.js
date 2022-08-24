@@ -32,7 +32,7 @@ function TravelButton({ planetName = "planet" }) {
         background={
           planetName == selectedPlanet
             ? "linear-gradient(293.71deg, #00FCE2 32.27%, rgba(255, 255, 255, 0.87) 87.87%)"
-            : "linear-gradient(293.71deg, #A72C2C 21.26%, rgba(255, 255, 255, 0.87) 87.87%)"
+            : "linear-gradient(293.71deg, #F72C2C 21.26%, rgba(255, 255, 255, 0.87) 87.87%)"
         }
         justifyContent="center"
         alignItems="center"

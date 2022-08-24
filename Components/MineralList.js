@@ -50,7 +50,7 @@ function MineralList() {
           borderRadius="20px"
           justifyContent="space-evenly"
           alignItems="center"
-          marginTop="25px"
+          marginTop="5px"
           alignSelf="center"
           as={motion.div}
           whileHover={{ scale: 0.99 }}
@@ -64,7 +64,7 @@ function MineralList() {
             handleClick(min.id);
           }}
         >
-          <Flex marginLeft="20px" width="160px">
+          <Flex width="160px" justifyContent="space-evenly" alignItems="center">
             <Image
               src={min.image}
               alt="mineral image"
@@ -74,17 +74,17 @@ function MineralList() {
             <Text
               fontSize="22.61px"
               color="#C1C1C1"
-              marginLeft="30px"
               as={motion.div}
               whileHover={{ color: "#FFF" }}
             >
               {min.name}
             </Text>
+
+            <Text color="white">{min.amountOwned}</Text>
+            <Text color="white">
+              {min.changedPrice ? min.changedPrice : min.startingPrice}
+            </Text>
           </Flex>
-          <Text color="white">{min.amountOwned}</Text>
-          <Text color="white" marginRight="10px">
-            {min.changedPrice ? min.changedPrice : min.startingPrice}
-          </Text>
         </Flex>
       ))}
       {/*
