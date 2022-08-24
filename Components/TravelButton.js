@@ -53,8 +53,16 @@ function TravelButton({ planetName = "planet" }) {
           height="80px"
           width="80px"
           borderRadius="50%"
-          background="#353448"
-          boxShadow="4px 4px 4px rgba(0, 0, 0, 0.25), inset 11px 8px 16px rgba(10, 9, 26, 0.86), inset -5px -5px 15px #646282"
+          background={
+            planetName != selectedPlanet
+              ? "radial-gradient(57.8% 57.8% at 23.03% 28.53%, #646282 13.33%, #0A091A 90.25%)"
+              : "#353448"
+          }
+          boxShadow={
+            planetName == selectedPlanet
+              ? "4px 4px 4px rgba(0, 0, 0, 0.25), inset 11px 8px 16px rgba(10, 9, 26, 0.86), inset -5px -5px 15px #646282"
+              : "0px"
+          }
           justifyContent="center"
           alignItems="center"
         >
