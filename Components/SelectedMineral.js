@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { GiMineralPearls } from "react-icons/gi";
-import { Switch, Stack } from "@chakra-ui/react";
+import { Switch, Stack, FormControl, FormLabel } from "@chakra-ui/react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { mineralIDAtom } from "../state/GlobalState";
 import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react";
@@ -133,8 +133,9 @@ function SelectedMineral({ mineral: mineralFromArray }) {
               </CircularProgressLabel>
             </CircularProgress>
           </Flex>
-          <Flex justifyContent="center" marginTop="20px">
-            <Stack direction="row">
+          <Flex justifyContent="center" alignItems="center" marginTop="20px">
+            <FormControl flexDirection="row">
+              <FormLabel color="#fff">Toggle Buy/Sell: </FormLabel>
               <Switch
                 colorScheme={isBuying ? "teal" : "red"}
                 size="lg"
@@ -143,18 +144,17 @@ function SelectedMineral({ mineral: mineralFromArray }) {
                   handleChange();
                 }}
               />
-            </Stack>
-            <Button
-              colorScheme={isBuying ? "teal" : "red"}
-              size="md"
-              onClick={() => {
-                handleBuyOrSell();
-              }}
-            >
-              {isBuying ? "Buy" : "Sell"}
-            </Button>
+            </FormControl>
           </Flex>
-
+          <Button
+            colorScheme={isBuying ? "teal" : "red"}
+            size="md"
+            onClick={() => {
+              handleBuyOrSell();
+            }}
+          >
+            {isBuying ? "Buy" : "Sell"}
+          </Button>
           <Flex
             direction="column"
             marginTop="50px"

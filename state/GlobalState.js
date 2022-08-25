@@ -1,5 +1,47 @@
 import { atom } from "jotai";
 
+export const dayAtom = atom(0);
+export const mineralIDAtom = atom(0);
+export const selectedPlanetAtom = atom("Fitzgerald 5");
+export const mineralPickedAtom = atom("");
+export const selectedMineralAtom = atom(false);
+export const mineralToBuyOrSellAtom = atom({});
+export const playerAtom = atom({ cash: 2000, debt: 2001 });
+export const planetAtom = atom([
+  { name: "Fitzgerald 5" },
+  { name: "Quetzacoatl" },
+  { name: "Ariana Prime" },
+  { name: "Euclid" },
+  { name: "Artemis" },
+  { name: "Utopia" },
+]);
+
+export const breakingGoodNewsAtom = atom([
+  {
+    mineralName: "Jadeenic",
+    msg: "Luck of the Irish!",
+    id: 0,
+    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
+  },
+  {
+    mineralName: "Jadeenic",
+    msg: "2!",
+    id: 1,
+    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
+  },
+  {
+    mineralName: "Jadeenic",
+    msg: "3!",
+    id: 2,
+    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
+  },
+  {
+    mineralName: "Jadeenic",
+    msg: "4!",
+    id: 3,
+    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
+  },
+]);
 export const mineralAtom = atom([
   {
     id: 0,
@@ -68,49 +110,3 @@ export const mineralAtom = atom([
       "https://cdn.pixabay.com/photo/2016/08/18/17/34/rock-crystal-1603469_960_720.jpg",
   },
 ]);
-
-export const playerAtom = atom({ cash: 2000, debt: 2001 });
-
-export const planetAtom = atom([
-  { name: "Fitzgerald 5" },
-  { name: "Quetzacoatl" },
-  { name: "Ariana Prime" },
-  { name: "Euclid" },
-  { name: "Artemis" },
-  { name: "Utopia" },
-]);
-
-export const selectedPlanetAtom = atom("Fitzgerald 5");
-export const mineralPickedAtom = atom("");
-export const selectedMineralAtom = atom(false);
-export const mineralToBuyOrSellAtom = atom({});
-
-export const breakingGoodNewsAtom = atom([
-  {
-    mineralName: "Jadeenic",
-    msg: "Luck of the Irish!",
-    id: 0,
-    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
-  },
-  {
-    mineralName: "Jadeenic",
-    msg: "2!",
-    id: 1,
-    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
-  },
-  {
-    mineralName: "Jadeenic",
-    msg: "3!",
-    id: 2,
-    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
-  },
-  {
-    mineralName: "Jadeenic",
-    msg: "4!",
-    id: 3,
-    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
-  },
-]);
-
-export const dayAtom = atom(0);
-export const mineralIDAtom = atom(0);
