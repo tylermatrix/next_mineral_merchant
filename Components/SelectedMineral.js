@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAtom } from "jotai";
 import {
   mineralAtom,
@@ -20,6 +20,7 @@ import { GiMineralPearls } from "react-icons/gi";
 import { Switch, Stack } from "@chakra-ui/react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { mineralIDAtom } from "../state/GlobalState";
+import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react";
 
 function SelectedMineral({ mineral: mineralFromArray }) {
   const [mineralPicked, setMineralPicked] = useAtom(mineralPickedAtom);
@@ -35,11 +36,15 @@ function SelectedMineral({ mineral: mineralFromArray }) {
     fontSize: "sm",
   };
 
+  useEffect(() => {
+    setSliderValue(currentMineral.amountOwned ? currentMineral.amountOwned : 0);
+  }, [currentMineral]);
   const currentMineral = mineral.find((m) => m.id === mineralID);
 
   const handleChange = (e) => {
     setIsBuying((isBuying = !isBuying));
     console.log(isBuying);
+    setSliderValue(currentMineral.amountOwned ? currentMineral.amountOwned : 0);
   };
   const handleBuyOrSell = () => {
     // create function to buy or sell mineral based on buy or sell state and mineral selected and player money and mineral price and mineral quantity from slider value
@@ -70,139 +75,150 @@ function SelectedMineral({ mineral: mineralFromArray }) {
 
   return (
     <>
-      <Flex direction="column">
-        <Flex justifyContent="space-between">
-          <Text
-            fontFamily="Poppins"
-            fontStyle="normal"
-            fontWeight="600"
-            fontSize="25px"
-            lineHeight="38px"
-            color="#C1C1C1"
-            margin="25px"
-          >
-            {currentMineral.name} @ $
-            {currentMineral.changedPrice
-              ? currentMineral.changedPrice
-              : currentMineral.startingPrice}
-          </Text>
-
-          <Text
-            display="flex"
-            fontFamily="Poppins"
-            fontStyle="normal"
-            fontWeight="500"
-            fontSize="24px"
-            lineHeight="36px"
-            color="#C1C1C1"
-            margin="25px"
-            backgroundColor="#37364C"
-            borderRadius="20px"
-            width="91.06px"
-            height="39.3px"
-            boxShadow="4px 4px 18px #0A091A, -3px -3px 9px #646282"
-            justifyContent="center"
-            alignItems="center"
-            cursor="pointer"
-            as={motion.div}
-            whileHover={{ scale: 0.99 }}
-            onClick={() => {
-              setMineralPicked("");
-            }}
-          >
-            List
-          </Text>
-        </Flex>
-
-        <Flex justifyContent="center">
-          <CircularProgress
-            value={sliderValue}
-            color={isBuying ? "teal" : "red"}
-            size="210.46px"
-          >
-            <CircularProgressLabel color="white">
-              {sliderValue}
-            </CircularProgressLabel>
-          </CircularProgress>
-        </Flex>
-        <Flex justifyContent="center" marginTop="20px">
-          <Stack direction="row">
-            <Switch
-              colorScheme={isBuying ? "teal" : "red"}
-              size="lg"
-              id="switch"
-              onChange={() => {
-                handleChange();
-              }}
-            />
-          </Stack>
-          <Button
-            colorScheme={isBuying ? "teal" : "red"}
-            size="md"
-            onClick={() => {
-              handleBuyOrSell();
-            }}
-          >
-            {isBuying ? "Buy" : "Sell"}
-          </Button>
-        </Flex>
-
-        <Flex
-          direction="column"
-          marginTop="50px"
-          width="80%"
-          alignSelf="center"
-        >
-          <Text color="red">
-            {!isBuying && currentMineral.amountOwned < 1
-              ? "You have nothing to sell!"
-              : ""}
-          </Text>
-          <Slider
-            aria-label="slider-ex-6"
-            color={isBuying ? "teal" : "red"}
-            colorScheme={isBuying ? "teal" : "red"}
-            max={
-              isBuying
-                ? Math.floor(
-                    player.cash / currentMineral.startingPrice > 100
-                      ? 100
-                      : player.cash / currentMineral.startingPrice
-                  )
-                : currentMineral.amountOwned
-            }
-            onChange={(val) => setSliderValue(val)}
-          >
-            <SliderMark
-              value={Math.floor(
-                player.cash / currentMineral.startingPrice > 100
-                  ? 50
-                  : player.cash / currentMineral.startingPrice / 2
-              )}
-              {...labelStyles}
+      <ScaleFade initialScale={0.9} in={true}>
+        <Flex direction="column">
+          <Flex justifyContent="space-between">
+            <Text
+              fontFamily="Poppins"
+              fontStyle="normal"
+              fontWeight="600"
+              fontSize="25px"
+              lineHeight="38px"
+              color="#C1C1C1"
+              margin="25px"
+              as={motion.div}
+              transition="ease-in 1s"
             >
-              {Math.floor(
-                player.cash / currentMineral.startingPrice > 100
-                  ? 50
-                  : player.cash / currentMineral.startingPrice / 2
-              )}
-            </SliderMark>
-            <SliderTrack>
-              <SliderFilledTrack />
-            </SliderTrack>
+              {currentMineral.name} @ $
+              {currentMineral.changedPrice
+                ? currentMineral.changedPrice
+                : currentMineral.startingPrice}
+            </Text>
 
-            <SliderThumb boxSize={8}>
-              <Box color={isBuying ? "teal" : "red"} as={GiMineralPearls} />
-            </SliderThumb>
-          </Slider>
-        </Flex>
+            <Text
+              display="flex"
+              fontFamily="Poppins"
+              fontStyle="normal"
+              fontWeight="500"
+              fontSize="24px"
+              lineHeight="36px"
+              color="#C1C1C1"
+              margin="25px"
+              backgroundColor="#37364C"
+              borderRadius="20px"
+              width="91.06px"
+              height="39.3px"
+              boxShadow="4px 4px 18px #0A091A, -3px -3px 9px #646282"
+              justifyContent="center"
+              alignItems="center"
+              cursor="pointer"
+              as={motion.div}
+              whileHover={{ scale: 0.99 }}
+              onClick={() => {
+                setMineralPicked("");
+              }}
+            >
+              List
+            </Text>
+          </Flex>
 
-        <Flex marginTop="40px" direction="column">
-          <Text color="white">
-            Current Amount: {currentMineral.amountOwned}
-          </Text>
+          <Flex justifyContent="center">
+            <CircularProgress
+              value={sliderValue}
+              color={isBuying ? "teal" : "red"}
+              size="210.46px"
+            >
+              <CircularProgressLabel color="white">
+                {sliderValue}
+              </CircularProgressLabel>
+            </CircularProgress>
+          </Flex>
+          <Flex justifyContent="center" marginTop="20px">
+            <Stack direction="row">
+              <Switch
+                colorScheme={isBuying ? "teal" : "red"}
+                size="lg"
+                id="switch"
+                onChange={() => {
+                  handleChange();
+                }}
+              />
+            </Stack>
+            <Button
+              colorScheme={isBuying ? "teal" : "red"}
+              size="md"
+              onClick={() => {
+                handleBuyOrSell();
+              }}
+            >
+              {isBuying ? "Buy" : "Sell"}
+            </Button>
+          </Flex>
+
+          <Flex
+            direction="column"
+            marginTop="50px"
+            width="80%"
+            alignSelf="center"
+          >
+            <Text color="red">
+              {!isBuying && currentMineral.amountOwned < 1
+                ? "You have nothing to sell!"
+                : ""}
+            </Text>
+            <Slider
+              aria-label="slider-ex-6"
+              color={isBuying ? "teal" : "red"}
+              colorScheme={isBuying ? "teal" : "red"}
+              defaultValue={currentMineral.amountOwned}
+              max={
+                isBuying
+                  ? Math.floor(
+                      player.cash / currentMineral.startingPrice > 100
+                        ? 100
+                        : player.cash / currentMineral.startingPrice
+                    )
+                  : currentMineral.amountOwned
+              }
+              onChange={(val) => setSliderValue(val)}
+            >
+              <SliderMark value={0} {...labelStyles}>
+                0
+              </SliderMark>
+              <SliderMark
+                value={Math.floor(
+                  player.cash / currentMineral.startingPrice > 100
+                    ? 50
+                    : player.cash / currentMineral.startingPrice / 2
+                )}
+                {...labelStyles}
+              >
+                {Math.floor(
+                  player.cash / currentMineral.startingPrice > 100
+                    ? 50
+                    : player.cash / currentMineral.startingPrice / 2
+                )}
+              </SliderMark>
+              <SliderMark value={100} {...labelStyles}>
+                {Math.floor(player.cash / currentMineral.startingPrice)}
+              </SliderMark>
+              <SliderTrack>
+                <SliderFilledTrack />
+              </SliderTrack>
+
+              <SliderThumb boxSize={8}>
+                <Box color={isBuying ? "teal" : "red"} as={GiMineralPearls} />
+              </SliderThumb>
+            </Slider>
+          </Flex>
+
+          <Flex marginTop="40px" direction="column">
+            <Text color="white">
+              Current Amount: {currentMineral.amountOwned}
+            </Text>
+          </Flex>
         </Flex>
-      </Flex>
+      </ScaleFade>
     </>
   );
 }

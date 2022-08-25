@@ -18,8 +18,9 @@ export default function Minerals() {
           bg="#353448"
           boxShadow="4px 4px 18px #0A091A, -3px -3px 15px #646282"
           borderRadius="20px"
+          transition="ease-in"
         >
-          <SelectedMineral></SelectedMineral>
+          <SelectedMineral transition="ease-in"></SelectedMineral>
         </Flex>
       ) : (
         <Flex
@@ -30,7 +31,7 @@ export default function Minerals() {
           boxShadow="4px 4px 18px #0A091A, -3px -3px 15px #646282"
           borderRadius="15px"
         >
-          <MineralList></MineralList>
+          <MineralList transition="ease-in"></MineralList>
         </Flex>
       )}
     </>

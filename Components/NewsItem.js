@@ -15,7 +15,12 @@ function NewsItem({ newsItem, id }) {
         key={id}
       >
         <div className="event_image">
-          <Image src={newsItem.img} alt="Event image" width="77.38px" />
+          <Image
+            src={newsItem.img}
+            alt="Event image"
+            width="77.38px"
+            borderRadius="10px"
+          />
         </div>
         <div className="event_text">
           <h2 className="h2News">Mineral prices up!</h2>
