@@ -14,6 +14,9 @@ function TravelButton({ planetName = "planet" }) {
     setDay(day + 1);
 
     const newMineral = mineral.map((item) => {
+      if (item.changedPrice) {
+        item.lastChangePrice = item.changedPrice;
+      }
       return {
         ...item,
         changedPrice: Math.floor(
