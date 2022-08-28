@@ -42,7 +42,7 @@ export default function ResourceMonitor() {
             fontSize="25px"
             lineHeight="38px"
             color="#C1C1C1"
-            margin="25px"
+            margin="15px"
             as={motion.div}
             whileHover={{ color: "#fff" }}
           >

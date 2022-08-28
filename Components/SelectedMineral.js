@@ -17,8 +17,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { GiMineralPearls } from "react-icons/gi";
-import { Switch, Stack, FormControl, FormLabel } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Switch, FormControl, FormLabel } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { mineralIDAtom } from "../state/GlobalState";
 import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react";
 
@@ -47,7 +47,6 @@ function SelectedMineral({ mineral: mineralFromArray }) {
     setSliderValue(currentMineral.amountOwned ? currentMineral.amountOwned : 0);
   };
   const handleBuyOrSell = () => {
-    // create function to buy or sell mineral based on buy or sell state and mineral selected and player money and mineral price and mineral quantity from slider value
     if (isBuying) {
       if (player.cash >= currentMineral.startingPrice * sliderValue) {
         setPlayer({

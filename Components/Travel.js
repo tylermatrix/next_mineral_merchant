@@ -28,7 +28,7 @@ export default function Travel() {
       >
         Travel
       </Text>
-      <Flex className="planets-section" gap="30px" direction="column">
+      <Flex className="planets-section" gap="20px" direction="column">
         <div className="row">
           <TravelButton planetName={planets[0].name}></TravelButton>
           <TravelButton planetName={planets[1].name}></TravelButton>
