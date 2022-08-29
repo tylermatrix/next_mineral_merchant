@@ -33,10 +33,9 @@ export default function News() {
       setMineral(newMineral);
       setBreakingNewsItem(
         ...breakingGoodNews,
-        (breakingGoodNews[randomIndex].msg = `${mineral[random].name} is now ${
-          (mineral[random].changedPrice / mineral[random].lastChangedPrice) *
-          100
-        }% more valuable than it was yesterday.`)
+        (breakingGoodNews[
+          randomIndex
+        ].msg = `${mineral[random].name} prices have skyrocketed! Sell some if you can!`)
       );
     } else {
       setShowNews(false);

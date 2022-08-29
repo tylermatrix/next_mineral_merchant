@@ -24,7 +24,7 @@ function NewsItem({ newsItem, id }) {
           />
         </div>
         <div className="event_text">
-          <h2 className="h2News">Mineral prices up!</h2>
+          <h2 className="h2News">Luck of the Irish!</h2>
           <p className="pNews">
             {newsItem?.msg}
             <br />
