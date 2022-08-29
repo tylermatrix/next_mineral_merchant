@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-
+export const gameoverAtom = atom(false);
 export const dayAtom = atom(0);
 export const mineralIDAtom = atom(0);
 export const selectedPlanetAtom = atom("Fitzgerald 5");

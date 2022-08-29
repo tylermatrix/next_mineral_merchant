@@ -6,6 +6,7 @@ import {
   playerAtom,
   selectedPlanetAtom,
   mineralAtom,
+  gameoverAtom,
 } from "../state/GlobalState";
 import ResourceItem from "./ResourceItem";
 export default function ResourceMonitor() {
@@ -13,7 +14,7 @@ export default function ResourceMonitor() {
   const [player, setPlayer] = useAtom(playerAtom);
   const [mineral, setMineral] = useAtom(mineralAtom);
   const [selectedPlanet, setSelectedPlanet] = useAtom(selectedPlanetAtom);
-
+  const [gameover, setGameover] = useAtom(gameoverAtom);
   const resetDay = () => {
     setDay(0);
     setPlayer({ ...player, cash: 2000, debt: 2001 });
@@ -22,6 +23,7 @@ export default function ResourceMonitor() {
       m.amountOwned = 0;
     }),
       setMineral(copyMineral);
+    setGameover(false);
   };
 
   return (

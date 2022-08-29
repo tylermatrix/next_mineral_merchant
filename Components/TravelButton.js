@@ -2,15 +2,24 @@ import React from "react";
 import { Text } from "@chakra-ui/react";
 import { Flex } from "@chakra-ui/react";
 import { useAtom } from "jotai";
-import { selectedPlanetAtom, dayAtom, mineralAtom } from "../state/GlobalState";
+import {
+  selectedPlanetAtom,
+  dayAtom,
+  mineralAtom,
+  gameoverAtom,
+} from "../state/GlobalState";
 import { motion } from "framer-motion";
 
 function TravelButton({ planetName = "planet" }) {
   const [selectedPlanet, setSelectedPlanet] = useAtom(selectedPlanetAtom);
   const [mineral, setMineral] = useAtom(mineralAtom);
   const [day, setDay] = useAtom(dayAtom);
+  const [gameover, setGameover] = useAtom(gameoverAtom);
+
   const handleClick = () => {
-    if (selectedPlanet === planetName) {
+    if (day == 30) {
+      setGameover(true);
+    } else if (selectedPlanet === planetName) {
       return;
     } else {
       setSelectedPlanet(planetName);
@@ -55,6 +64,7 @@ function TravelButton({ planetName = "planet" }) {
         cursor="pointer"
         boxShadow=" -4px -4px 8px #646282, 6px 5px 15px #0A091A"
         borderRadius="84.4988px"
+        disable={gameover}
       >
         <Flex
           height="80px"

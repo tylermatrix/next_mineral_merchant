@@ -1,11 +1,11 @@
 import { Flex, Text } from "@chakra-ui/react";
 import TravelButton from "./TravelButton";
 import { atom, useAtom } from "jotai";
-import { planetAtom } from "../state/GlobalState";
+import { planetAtom, gameoverAtom } from "../state/GlobalState";
 import { motion } from "framer-motion";
 export default function Travel() {
   const [planets, setPlanets] = useAtom(planetAtom);
-
+  const [gameover, setGameover] = useAtom(gameoverAtom);
   return (
     <Flex
       minW="387px"
@@ -28,7 +28,12 @@ export default function Travel() {
       >
         Travel
       </Text>
-      <Flex className="planets-section" gap="20px" direction="column">
+      <Flex
+        className="planets-section"
+        gap="20px"
+        direction="column"
+        opacity={gameover ? 0 : 1}
+      >
         <div className="row">
           <TravelButton planetName={planets[0].name}></TravelButton>
           <TravelButton planetName={planets[1].name}></TravelButton>
