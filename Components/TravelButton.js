@@ -41,6 +41,10 @@ function TravelButton({ planetName = "planet" }) {
           ),
         };
       });
+      const copyPlayer = player;
+      const newDebt = Math.round(player.debt * 1.3);
+      copyPlayer = { ...player, debt: newDebt };
+      setPlayer(copyPlayer);
       setMineral(newMineral);
     }
   };

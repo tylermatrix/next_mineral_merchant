@@ -62,7 +62,8 @@ function MineralList() {
         <Flex alignItems="center" gap={9} padding="5px">
           <Box height="38px" width="38px" />
           <Text
-            fontSize="12.61px"
+            fontWeight="600"
+            fontSize="18px"
             color="#C1C1C1"
             minW="120px"
             as={motion.div}
@@ -70,10 +71,10 @@ function MineralList() {
           >
             Name
           </Text>
-          <Flex minW="30px">
-            <Icon as={GiShoppingCart} color="green" justifySelf="left"></Icon>
+          <Flex minW="30px" justifyContent="left">
+            <Icon as={GiShoppingCart} color="green" w={7} h={7}></Icon>
           </Flex>
-          <Text color="white" fontSize="12.61px">
+          <Text fontWeight="600" fontSize="18px" color="white">
             Price
           </Text>
         </Flex>

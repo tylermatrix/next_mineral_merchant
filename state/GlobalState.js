@@ -17,7 +17,7 @@ export const selectedPlanetAtom = atom("Fitzgerald 5");
 export const mineralPickedAtom = atom("");
 export const selectedMineralAtom = atom(false);
 export const mineralToBuyOrSellAtom = atom({});
-export const playerAtom = atom({ cash: 2000, debt: 2001 });
+export const playerAtom = atom({ cash: 15000, debt: 20000 });
 export const planetAtom = atom([
   { name: "Fitzgerald 5" },
   { name: "Quetzacoatl" },

@@ -63,7 +63,9 @@ export default function PriceFeed() {
         >
           Price Feed
         </Text>
-        <ResourceItem resource="day">{day}</ResourceItem>
+        <ResourceItem resource="day" maxW="200px">
+          {day}
+        </ResourceItem>
       </Flex>
       <Flex marginTop="60px" gap="10px" justifyContent="right">
         <PriceFeedItem
