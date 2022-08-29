@@ -10,21 +10,25 @@ function TravelButton({ planetName = "planet" }) {
   const [mineral, setMineral] = useAtom(mineralAtom);
   const [day, setDay] = useAtom(dayAtom);
   const handleClick = () => {
-    setSelectedPlanet(planetName);
-    setDay(day + 1);
+    if (selectedPlanet === planetName) {
+      return;
+    } else {
+      setSelectedPlanet(planetName);
+      setDay(day + 1);
 
-    const newMineral = mineral.map((item) => {
-      if (item.changedPrice) {
-        item.lastChangePrice = item.changedPrice;
-      }
-      return {
-        ...item,
-        changedPrice: Math.floor(
-          item.startingPrice * (Math.random() * 0.6 + 0.7)
-        ),
-      };
-    });
-    setMineral(newMineral);
+      const newMineral = mineral.map((item) => {
+        if (item.changedPrice) {
+          item.lastChangedPrice = item.changedPrice;
+        }
+        return {
+          ...item,
+          changedPrice: Math.floor(
+            item.startingPrice * (Math.random() * 0.6 + 0.7)
+          ),
+        };
+      });
+      setMineral(newMineral);
+    }
   };
 
   return (

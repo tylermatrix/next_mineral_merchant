@@ -28,8 +28,8 @@ export default function PriceFeed() {
       );
     } else {
       return Math.round(
-        ((mineral.changedPrice - mineral.lastChangePrice) /
-          mineral.lastChangePrice) *
+        ((mineral.changedPrice - mineral.lastChangedPrice) /
+          mineral.lastChangedPrice) *
           100
       );
     }

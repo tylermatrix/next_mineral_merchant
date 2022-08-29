@@ -14,6 +14,7 @@ function ResourceItem({ resource, children }) {
         justifyContent="space-evenly"
         alignItems="center"
         marginTop="25px"
+        padding="20px"
         alignSelf="center"
         as={motion.div}
         whileHover={{ scale: 0.99 }}
