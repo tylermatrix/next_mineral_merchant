@@ -7,6 +7,8 @@ import {
   dayAtom,
   mineralAtom,
   gameoverAtom,
+  highscoresAtom,
+  playerAtom,
 } from "../state/GlobalState";
 import { motion } from "framer-motion";
 
@@ -15,10 +17,13 @@ function TravelButton({ planetName = "planet" }) {
   const [mineral, setMineral] = useAtom(mineralAtom);
   const [day, setDay] = useAtom(dayAtom);
   const [gameover, setGameover] = useAtom(gameoverAtom);
+  const [highscores, setHighscores] = useAtom(highscoresAtom);
+  const [player, setPlayer] = useAtom(playerAtom);
 
   const handleClick = () => {
     if (day == 30) {
       setGameover(true);
+      setHighscores([...highscores, player.cash]);
     } else if (selectedPlanet === planetName) {
       return;
     } else {

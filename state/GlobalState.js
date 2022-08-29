@@ -1,6 +1,17 @@
 import { atom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
+
+export const highscoresAtom = atomWithStorage("highscores", [
+  "100000",
+  "500000",
+  "1000000",
+  "3333",
+  "11",
+  "1",
+  "11",
+]);
 export const gameoverAtom = atom(false);
-export const dayAtom = atom(0);
+export const dayAtom = atom(30);
 export const mineralIDAtom = atom(0);
 export const selectedPlanetAtom = atom("Fitzgerald 5");
 export const mineralPickedAtom = atom("");
