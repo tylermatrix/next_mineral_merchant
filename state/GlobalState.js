@@ -11,7 +11,7 @@ export const highscoresAtom = atomWithStorage("highscores", [
   "11",
 ]);
 export const gameoverAtom = atom(false);
-export const dayAtom = atom(30);
+export const dayAtom = atom(0);
 export const mineralIDAtom = atom(0);
 export const selectedPlanetAtom = atom("Fitzgerald 5");
 export const mineralPickedAtom = atom("");
@@ -46,7 +46,7 @@ export const mineralAtom = atom([
     startingPrice: 1090,
     changedPrice: null,
     lastChangedPrice: null,
-    amountOwned: 4,
+    amountOwned: 100,
     description: "This is a mineral",
     currentMineral: false,
     image:
@@ -58,7 +58,7 @@ export const mineralAtom = atom([
     startingPrice: 333,
     changedPrice: null,
     lastChangedPrice: null,
-    amountOwned: 0,
+    amountOwned: 50,
     description: "This is a mineral",
     currentMineral: false,
     image:
@@ -94,7 +94,7 @@ export const mineralAtom = atom([
     startingPrice: 555,
     changedPrice: null,
     lastChangedPrice: null,
-    amountOwned: 0,
+    amountOwned: 1,
     description: "This is a mineral",
     currentMineral: false,
     image:

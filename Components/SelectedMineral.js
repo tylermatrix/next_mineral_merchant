@@ -76,7 +76,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
     <>
       <ScaleFade initialScale={0.9} in={true}>
         <Flex direction="column">
-          <Flex justifyContent="space-between">
+          <Flex>
             <Text
               fontFamily="Poppins"
               fontStyle="normal"

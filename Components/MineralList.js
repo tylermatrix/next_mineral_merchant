@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Text, Image } from "@chakra-ui/react";
+import { Flex, Text, Image, Box, Icon } from "@chakra-ui/react";
 import { useAtom } from "jotai";
 import {
   mineralAtom,
@@ -8,7 +8,8 @@ import {
   mineralToBuyOrSellAtom,
   mineralIDAtom,
 } from "../state/GlobalState";
-
+import { IoWalletOutline, IoWalletSharp } from "react-icons/io";
+import { GiShoppingCart } from "react-icons/gi";
 import { motion } from "framer-motion";
 function MineralList() {
   const [mineralPicked, setMineralPicked] = useAtom(mineralPickedAtom);
@@ -34,13 +35,49 @@ function MineralList() {
         fontSize="25px"
         lineHeight="38px"
         color="#C1C1C1"
-        margin="25px"
+        margin="10px"
         width="100%"
         as={motion.div}
         whileHover={{ color: "#fff" }}
       >
         Mineral
       </Text>
+
+      {/* <Flex
+        width="348.3px"
+        justifyContent="center"
+        margin="auto"
+        bg="blue"
+        padding="10px"
+      >
+        <Flex gap={10}>
+          <Box height="38px" width="38px"></Box>
+          <Text minW="120px">Name</Text>
+          <Text>Hodl</Text>
+          <Text marginRight="10px">Price</Text>
+        </Flex>
+      </Flex> */}
+
+      <Flex width="90%" height="65px" alignItems="center" alignSelf="center">
+        <Flex alignItems="center" gap={9} padding="5px">
+          <Box height="38px" width="38px" />
+          <Text
+            fontSize="12.61px"
+            color="#C1C1C1"
+            minW="120px"
+            as={motion.div}
+            whileHover={{ color: "#FFF" }}
+          >
+            Name
+          </Text>
+          <Flex minW="30px">
+            <Icon as={GiShoppingCart} color="green" justifySelf="left"></Icon>
+          </Flex>
+          <Text color="white" fontSize="12.61px">
+            Price
+          </Text>
+        </Flex>
+      </Flex>
       {minerals.map((min, index) => (
         <Flex
           width="90%"
@@ -48,7 +85,6 @@ function MineralList() {
           background="#37364C"
           boxShadow="4px 4px 18px #0A091A, -3px -3px 9px #646282"
           borderRadius="20px"
-          justifyContent="space-evenly"
           alignItems="center"
           alignSelf="center"
           as={motion.div}
@@ -63,7 +99,7 @@ function MineralList() {
             handleClick(min.id);
           }}
         >
-          <Flex flexGrow="1" justifyContent="space-evenly" alignItems="center">
+          <Flex alignItems="center" gap={9} padding="5px">
             <Image
               src={min.image}
               alt="mineral image"
@@ -74,16 +110,17 @@ function MineralList() {
             <Text
               fontSize="22.61px"
               color="#C1C1C1"
+              minW="120px"
               as={motion.div}
               whileHover={{ color: "#FFF" }}
             >
               {min.name}
             </Text>
 
-            <Text color="white" alignItems="right">
+            <Text color="white" minW="30px">
               {min.amountOwned}
             </Text>
-            <Text color="white" alignItems="right">
+            <Text color="white">
               {min.changedPrice ? min.changedPrice : min.startingPrice}
             </Text>
           </Flex>
