@@ -91,7 +91,7 @@ function MineralList() {
             handleClick(min.id);
           }}
         >
-          <Flex alignItems="center" gap={9} padding="5px">
+          <Flex alignItems="center" gap={9}>
             <Image
               src={min.image}
               alt="mineral image"

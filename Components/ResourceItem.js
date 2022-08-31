@@ -43,9 +43,7 @@ function ResourceItem({ resource, children }) {
           boxShadow="-3px -3px 9px #646282, inset 4px 4px 18px #0A091A"
           borderRadius="20px"
         >
-          <Text textAlign="" color="#C1C1C1">
-            {children}
-          </Text>
+          <Text color="#C1C1C1">{children}</Text>
         </Flex>
       </Flex>
     </>
