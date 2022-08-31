@@ -51,7 +51,7 @@ export default function PriceFeed() {
       p="20px"
       flexDirection="column"
     >
-      <Flex maxHeight="50px" justifyContent="space-evenly" alignItems="center">
+      <Flex maxHeight="50px" justifyContent="space-between" alignItems="center">
         <Text
           fontFamily="Poppins"
           fontStyle="normal"
@@ -63,9 +63,9 @@ export default function PriceFeed() {
         >
           Price Feed
         </Text>
-        <ResourceItem resource="day" maxW="200px">
-          {day}
-        </ResourceItem>
+        <Flex width="60%" justifyContent="right">
+          <ResourceItem resource="day">{day}</ResourceItem>
+        </Flex>
       </Flex>
       <Flex marginTop="60px" gap="10px" justifyContent="right">
         <PriceFeedItem

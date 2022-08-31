@@ -15,9 +15,6 @@ function MineralList() {
   const [mineralPicked, setMineralPicked] = useAtom(mineralPickedAtom);
   const [minerals, setMinerals] = useAtom(mineralAtom);
   const [mineralSelected, setSelectedMineral] = useAtom(selectedMineralAtom);
-  const [mineralToBuyOrSell, setMineralToBuyOrSell] = useAtom(
-    mineralToBuyOrSellAtom
-  );
   const [mineralID, setMineralID] = useAtom(mineralIDAtom);
 
   const handleClick = (id) => {
@@ -35,7 +32,8 @@ function MineralList() {
         fontSize="25px"
         lineHeight="38px"
         color="#C1C1C1"
-        margin="10px"
+        marginTop="25px"
+        marginLeft="20px"
         width="100%"
         as={motion.div}
         whileHover={{ color: "#fff" }}
@@ -61,14 +59,7 @@ function MineralList() {
       <Flex width="90%" height="65px" alignItems="center" alignSelf="center">
         <Flex alignItems="center" gap={9} padding="5px">
           <Box height="38px" width="38px" />
-          <Text
-            fontWeight="600"
-            fontSize="18px"
-            color="#C1C1C1"
-            minW="120px"
-            as={motion.div}
-            whileHover={{ color: "#FFF" }}
-          >
+          <Text fontWeight="600" fontSize="18px" color="white" minW="120px">
             Name
           </Text>
           <Flex minW="30px" justifyContent="left">

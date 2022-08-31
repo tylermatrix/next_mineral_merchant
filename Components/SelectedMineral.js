@@ -31,7 +31,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
   const [isBuying, setIsBuying] = useState(false);
   const [mineralID, setMineralID] = useAtom(mineralIDAtom);
   const labelStyles = {
-    mt: "2",
+    mt: "4",
     ml: "-2.5",
     fontSize: "sm",
   };
@@ -133,7 +133,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
             </CircularProgress>
           </Flex>
           <Flex justifyContent="center" alignItems="center" marginTop="20px">
-            <FormControl flexDirection="row">
+            <FormControl flexDirection="row" maxW="200px">
               <FormLabel color="#fff">Toggle Buy/Sell: </FormLabel>
               <Switch
                 colorScheme={isBuying ? "teal" : "red"}
@@ -144,16 +144,19 @@ function SelectedMineral({ mineral: mineralFromArray }) {
                 }}
               />
             </FormControl>
+
+            <Button
+              colorScheme={isBuying ? "teal" : "red"}
+              size="md"
+              height="70px"
+              width="100px"
+              onClick={() => {
+                handleBuyOrSell();
+              }}
+            >
+              {isBuying ? "Buy" : "Sell"}
+            </Button>
           </Flex>
-          <Button
-            colorScheme={isBuying ? "teal" : "red"}
-            size="md"
-            onClick={() => {
-              handleBuyOrSell();
-            }}
-          >
-            {isBuying ? "Buy" : "Sell"}
-          </Button>
           <Flex
             direction="column"
             marginTop="50px"
@@ -199,13 +202,17 @@ function SelectedMineral({ mineral: mineralFromArray }) {
                 )}
               </SliderMark>
               <SliderMark value={100} {...labelStyles}>
-                {Math.floor(player.cash / currentMineral.startingPrice)}
+                {Math.floor(
+                  player.cash / currentMineral.startingPrice > 100
+                    ? 100
+                    : player.cash / currentMineral.startingPrice
+                )}
               </SliderMark>
               <SliderTrack>
                 <SliderFilledTrack />
               </SliderTrack>
 
-              <SliderThumb boxSize={8}>
+              <SliderThumb boxSize={6}>
                 <Box color={isBuying ? "teal" : "red"} as={GiMineralPearls} />
               </SliderThumb>
             </Slider>
