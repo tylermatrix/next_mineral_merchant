@@ -4,16 +4,10 @@ import { motion } from "framer-motion";
 import { Flex, Text } from "@chakra-ui/react";
 import { useAtom } from "jotai";
 import { gameoverAtom, highscoresAtom } from "../state/GlobalState";
-import { atomWithStorage } from "jotai/utils";
 import HighscoreItem from "./HighscoreItem";
 import Travel from "./Travel";
 
 function HighScores() {
-  //   const highscores = ["1000000", "500000", "100000"];
-  //   localStorage.setItem("highscores", JSON.stringify(highscores));
-  //   const storedHighscores = JSON.parse(localStorage.getItem("highscores"));
-  //   console.log(storedHighscores);
-
   const [storedHighscores, setStoredHighscores] = useAtom(highscoresAtom);
   console.log(`storedHighscores: ${storedHighscores}`);
   const copyStoredHighscores = [...storedHighscores];

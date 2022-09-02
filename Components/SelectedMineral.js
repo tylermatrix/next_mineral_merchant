@@ -5,7 +5,7 @@ import {
   mineralPickedAtom,
   playerAtom,
 } from "../state/GlobalState";
-import { Flex, Text, Image, Box } from "@chakra-ui/react";
+import { Flex, Text, Box } from "@chakra-ui/react";
 import {
   Slider,
   SliderTrack,
@@ -20,7 +20,7 @@ import { GiMineralPearls } from "react-icons/gi";
 import { Switch, FormControl, FormLabel } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { mineralIDAtom } from "../state/GlobalState";
-import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react";
+import { ScaleFade } from "@chakra-ui/react";
 
 function SelectedMineral({ mineral: mineralFromArray }) {
   const [mineralPicked, setMineralPicked] = useAtom(mineralPickedAtom);

@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { dayAtom } from "../state/GlobalState";
 import { useAtom } from "jotai";
 import { mineralAtom } from "../state/GlobalState";
-import { VscTriangleUp, VscTriangleDown } from "react-icons/vsc";
 import PriceFeedItem from "./PriceFeedItem";
 import ResourceItem from "./ResourceItem";
 export default function PriceFeed() {

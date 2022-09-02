@@ -8,7 +8,6 @@ import {
   mineralToBuyOrSellAtom,
   mineralIDAtom,
 } from "../state/GlobalState";
-import { IoWalletOutline, IoWalletSharp } from "react-icons/io";
 import { GiShoppingCart } from "react-icons/gi";
 import { motion } from "framer-motion";
 function MineralList() {
