@@ -2,9 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { Flex } from "@chakra-ui/react";
-import LeftColumn from "../components/LeftColumn";
-import RightColumn from "../components/RightColumn";
-import Header from "../components/Header";
+import LeftColumn from "../Components/LeftColumn";
+import RightColumn from "../Components/RightColumn";
+import Header from "../Components/Header";
 export default function Home() {
   return (
     <>
