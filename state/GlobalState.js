@@ -46,7 +46,7 @@ export const mineralAtom = atom([
     startingPrice: 1090,
     changedPrice: null,
     lastChangedPrice: null,
-    amountOwned: 100,
+    amountOwned: 0,
     description: "This is a mineral",
     currentMineral: false,
     image:
@@ -58,7 +58,7 @@ export const mineralAtom = atom([
     startingPrice: 333,
     changedPrice: null,
     lastChangedPrice: null,
-    amountOwned: 50,
+    amountOwned: 0,
     description: "This is a mineral",
     currentMineral: false,
     image:
@@ -70,7 +70,7 @@ export const mineralAtom = atom([
     startingPrice: 12123,
     changedPrice: null,
     lastChangedPrice: null,
-    amountOwned: 3,
+    amountOwned: 0,
     description: "This is a mineral",
     currentMineral: false,
     image:
@@ -94,7 +94,7 @@ export const mineralAtom = atom([
     startingPrice: 555,
     changedPrice: null,
     lastChangedPrice: null,
-    amountOwned: 1,
+    amountOwned: 0,
     description: "This is a mineral",
     currentMineral: false,
     image:
@@ -106,7 +106,7 @@ export const mineralAtom = atom([
     startingPrice: 10,
     changedPrice: null,
     lastChangedPrice: null,
-    amountOwned: 1,
+    amountOwned: 0,
     description: "This is a mineral",
     currentMineral: false,
     image:
