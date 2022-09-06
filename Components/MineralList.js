@@ -97,6 +97,7 @@ function MineralList() {
               height="38px"
               borderRadius="10px"
               width="38px"
+              paddingLeft="10px"
             />
             <Text
               fontSize="22.61px"
