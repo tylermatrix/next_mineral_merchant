@@ -40,25 +40,23 @@ function MineralList() {
         Mineral
       </Text>
 
-      {/* <Flex
-        width="348.3px"
-        justifyContent="center"
-        margin="auto"
-        bg="blue"
-        padding="10px"
+      <Flex
+        width="90%"
+        height="65px"
+        alignItems="center"
+        alignSelf="center"
+        marginLeft="10px"
+        marginRight="10px"
       >
-        <Flex gap={10}>
-          <Box height="38px" width="38px"></Box>
-          <Text minW="120px">Name</Text>
-          <Text>Hodl</Text>
-          <Text marginRight="10px">Price</Text>
-        </Flex>
-      </Flex> */}
-
-      <Flex width="90%" height="65px" alignItems="center" alignSelf="center">
         <Flex alignItems="center" gap={9} padding="5px">
           <Box height="38px" width="38px" />
-          <Text fontWeight="600" fontSize="18px" color="white" minW="120px">
+          <Text
+            fontWeight="600"
+            fontSize="18px"
+            color="white"
+            minW="115px"
+            marginLeft="5px"
+          >
             Name
           </Text>
           <Flex minW="30px" justifyContent="left">
@@ -97,7 +95,7 @@ function MineralList() {
               height="38px"
               borderRadius="10px"
               width="38px"
-              paddingLeft="10px"
+              marginLeft="10px"
             />
             <Text
               fontSize="22.61px"
@@ -112,7 +110,7 @@ function MineralList() {
             <Text color="white" minW="30px">
               {min.amountOwned}
             </Text>
-            <Text color="white">
+            <Text color="white" marginRight="50px" justifySelf="right">
               {min.changedPrice ? min.changedPrice : min.startingPrice}
             </Text>
           </Flex>

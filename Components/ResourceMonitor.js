@@ -17,7 +17,7 @@ export default function ResourceMonitor() {
   const [gameover, setGameover] = useAtom(gameoverAtom);
   const resetDay = () => {
     setDay(0);
-    setPlayer({ ...player, cash: 2000, debt: 2001 });
+    setPlayer({ ...player, cash: 15000, debt: 20000 });
     const copyMineral = [...mineral];
     copyMineral.forEach((m) => {
       m.amountOwned = 0;

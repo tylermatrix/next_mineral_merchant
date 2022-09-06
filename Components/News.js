@@ -42,20 +42,6 @@ export default function News() {
     }
   }, [breakingGoodNews, day]);
 
-  //create a function that chooses a random day to display a breaking good news item
-  // const chooseRandomDay = () => {
-  //   const randomDay = Math.floor(Math.random() * (day + 1));
-  //   const randomEvent = Math.floor(Math.random() * (day + 1));
-  //   if (randomDay === randomEvent) {
-  //     return day;
-  //   }
-  // };
-  // //use useEffect to call the function to choose a random day
-  // useEffect(() => {
-  //   const randomDay = chooseRandomDay();
-  //   setBreakingNewsItem(breakingGoodNews[randomDay]);
-  // }, [day]);
-
   return (
     <Flex
       minW="420px"
