@@ -24,18 +24,11 @@ export const planetAtom = atom([
   { name: "Utopia" },
 ]);
 
-export const breakingGoodNewsAtom = atom([
-  {
-    msg: "Luck of the irish!",
-    id: 0,
-    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
-  },
-  {
-    msg: "Mineral saturation!",
-    id: 1,
-    img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
-  },
-]);
+export const breakingGoodNewsAtom = atom({
+  msg: "Luck of the irish!",
+  id: 0,
+  img: "https://cdn.pixabay.com/photo/2015/09/15/19/22/klee-941597_960_720.jpg",
+});
 export const mineralAtom = atom([
   {
     id: 0,

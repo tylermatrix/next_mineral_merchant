@@ -102,7 +102,7 @@ function MineralList() {
             <Text color="white" minW="30px">
               {min.amountOwned}
             </Text>
-            <Text color="white" marginRight="50px" width="50px">
+            <Text color="white" marginRight="50px" width="55px">
               {min.changedPrice ? min.changedPrice : min.startingPrice}
             </Text>
           </Flex>

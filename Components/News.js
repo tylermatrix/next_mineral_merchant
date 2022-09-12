@@ -11,32 +11,29 @@ export default function News() {
   const [breakingNewsItem, setBreakingNewsItem] = useState([]);
   const [mineral, setMineral] = useAtom(mineralAtom);
 
+  const breakingGoodNewsCopy = breakingGoodNews;
   const [day, setDay] = useAtom(dayAtom);
   const [showNews, setShowNews] = useState(false);
-
+  const [currentSpecialMineral, setCurrentSpecialMineral] = useState("Mineral");
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * breakingGoodNews.length);
-    const randomEvent = Math.floor(Math.random() * breakingGoodNews.length);
+    const randomIndex = Math.floor(Math.random() * 2);
+    const randomEvent = Math.floor(Math.random() * 2);
 
     if (randomIndex === randomEvent) {
-      setShowNews(true);
       const random = Math.floor(Math.random() * mineral.length);
+      setCurrentSpecialMineral(mineral[random].name);
       const newMineral = mineral.map((item) => {
         if (mineral[random] == item) {
-          item.changedPrice = item.changedPrice * 3;
+          item.changedPrice = item.changedPrice * 4;
+          breakingGoodNewsCopy.msg = `The price of ${item.name} has skyrocketed!`;
         }
-        return {
-          ...item,
-        };
+
+        setShowNews(true);
+        return { ...item };
       });
 
       setMineral(newMineral);
-      setBreakingNewsItem(
-        ...breakingGoodNews,
-        (breakingGoodNews[
-          randomIndex
-        ].msg = `${mineral[random].name} prices have skyrocketed! Sell some if you can!`)
-      );
+      setBreakingNewsItem(breakingGoodNewsCopy);
     } else {
       setShowNews(false);
     }
