@@ -41,7 +41,6 @@ function MineralList() {
       </Text>
 
       <Flex
-        width="90%"
         height="65px"
         alignItems="center"
         alignSelf="center"
@@ -69,7 +68,7 @@ function MineralList() {
       </Flex>
       {minerals.map((min, index) => (
         <Flex
-          width="90%"
+          width="100%"
           height="65px"
           background="#37364C"
           boxShadow="4px 4px 18px #0A091A, -3px -3px 9px #646282"

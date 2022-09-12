@@ -48,10 +48,13 @@ function SelectedMineral({ mineral: mineralFromArray }) {
   };
   const handleBuyOrSell = () => {
     if (isBuying) {
-      if (player.cash >= currentMineral.startingPrice * sliderValue) {
+      if (
+        player.cash >= currentMineral.changedPrice * sliderValue &&
+        currentMineral.amountOwned + sliderValue <= 100
+      ) {
         setPlayer({
           ...player,
-          cash: player.cash - currentMineral.startingPrice * sliderValue,
+          cash: player.cash - currentMineral.changedPrice * sliderValue,
         });
 
         const copyMineral = [...mineral];
@@ -62,7 +65,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
     if (!isBuying && currentMineral.amountOwned >= sliderValue) {
       setPlayer({
         ...player,
-        cash: player.cash + currentMineral.startingPrice * sliderValue,
+        cash: player.cash + currentMineral.changedPrice * sliderValue,
       });
       if (currentMineral.amountOwned >= sliderValue) {
         const copyMineral = [...mineral];
