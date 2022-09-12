@@ -103,3 +103,5 @@ export const mineralAtom = atom([
       "https://cdn.pixabay.com/photo/2016/08/18/17/34/rock-crystal-1603469_960_720.jpg",
   },
 ]);
+
+export const showNewsAtom = atom(false);

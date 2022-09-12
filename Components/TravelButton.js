@@ -9,6 +9,7 @@ import {
   gameoverAtom,
   highscoresAtom,
   playerAtom,
+  showNewsAtom,
 } from "../state/GlobalState";
 import { motion } from "framer-motion";
 
@@ -19,8 +20,9 @@ function TravelButton({ planetName = "planet" }) {
   const [gameover, setGameover] = useAtom(gameoverAtom);
   const [highscores, setHighscores] = useAtom(highscoresAtom);
   const [player, setPlayer] = useAtom(playerAtom);
-
+  const [showNews, setShowNews] = useAtom(showNewsAtom);
   const handleClick = () => {
+    setShowNews(false);
     if (day == 30) {
       setGameover(true);
       setHighscores([...highscores, player.cash]);

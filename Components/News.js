@@ -1,5 +1,9 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { breakingGoodNewsAtom, mineralAtom } from "../state/GlobalState";
+import {
+  breakingGoodNewsAtom,
+  mineralAtom,
+  showNewsAtom,
+} from "../state/GlobalState";
 import { useAtom } from "jotai";
 import { dayAtom } from "../state/GlobalState";
 import { useState, useEffect } from "react";
@@ -10,11 +14,11 @@ export default function News() {
   const [breakingGoodNews, setBreakingGoodNews] = useAtom(breakingGoodNewsAtom);
   const [breakingNewsItem, setBreakingNewsItem] = useState([]);
   const [mineral, setMineral] = useAtom(mineralAtom);
-
+  const [showNews, setShowNews] = useAtom(showNewsAtom);
   const breakingGoodNewsCopy = breakingGoodNews;
   const [day, setDay] = useAtom(dayAtom);
-  const [showNews, setShowNews] = useState(false);
   const [currentSpecialMineral, setCurrentSpecialMineral] = useState("Mineral");
+
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * 2);
     const randomEvent = Math.floor(Math.random() * 2);
@@ -27,7 +31,6 @@ export default function News() {
           item.changedPrice = item.changedPrice * 4;
           breakingGoodNewsCopy.msg = `The price of ${item.name} has skyrocketed!`;
         }
-
         setShowNews(true);
         return { ...item };
       });
