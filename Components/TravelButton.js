@@ -42,7 +42,7 @@ function TravelButton({ planetName = "planet" }) {
         };
       });
       const copyPlayer = player;
-      const newDebt = Math.round(player.debt * 1.11);
+      const newDebt = Math.round(player.debt * 1.15);
       copyPlayer = { ...player, debt: newDebt };
       setPlayer(copyPlayer);
       setMineral(newMineral);

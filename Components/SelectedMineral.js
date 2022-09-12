@@ -48,33 +48,8 @@ function SelectedMineral({ mineral: mineralFromArray }) {
     setSliderValue(currentMineral.amountOwned ? currentMineral.amountOwned : 0);
   };
   const handleBuyOrSell = () => {
-    if (isBuying) {
-      if (day > 0) {
-        if (
-          player.cash >= currentMineral.changedPrice * sliderValue &&
-          currentMineral.amountOwned + sliderValue <= 100
-        ) {
-          setPlayer({
-            ...player,
-            cash: player.cash - currentMineral.changedPrice * sliderValue,
-          });
-
-          const copyMineral = [...mineral];
-          copyMineral[mineralID].amountOwned += sliderValue;
-          setMineral(copyMineral);
-        }
-      }
-      if (!isBuying && currentMineral.amountOwned >= sliderValue) {
-        setPlayer({
-          ...player,
-          cash: player.cash + currentMineral.changedPrice * sliderValue,
-        });
-        if (currentMineral.amountOwned >= sliderValue) {
-          const copyMineral = [...mineral];
-          copyMineral[mineralID].amountOwned -= sliderValue;
-          setMineral(copyMineral);
-        }
-      } else if (day == 0) {
+    if (day == 0) {
+      if (isBuying) {
         if (
           player.cash >= currentMineral.startingPrice * sliderValue &&
           currentMineral.amountOwned + sliderValue <= 100
@@ -100,8 +75,93 @@ function SelectedMineral({ mineral: mineralFromArray }) {
           setMineral(copyMineral);
         }
       }
+    } else {
+      if (isBuying) {
+        if (
+          player.cash >= currentMineral.changedPrice * sliderValue &&
+          currentMineral.amountOwned + sliderValue <= 100
+        ) {
+          setPlayer({
+            ...player,
+            cash: player.cash - currentMineral.changedPrice * sliderValue,
+          });
+
+          const copyMineral = [...mineral];
+          copyMineral[mineralID].amountOwned += sliderValue;
+          setMineral(copyMineral);
+        }
+      }
+      if (!isBuying && currentMineral.amountOwned >= sliderValue) {
+        setPlayer({
+          ...player,
+          cash: player.cash + currentMineral.changedPrice * sliderValue,
+        });
+        if (currentMineral.amountOwned >= sliderValue) {
+          const copyMineral = [...mineral];
+          copyMineral[mineralID].amountOwned -= sliderValue;
+          setMineral(copyMineral);
+        }
+      }
     }
   };
+
+  /*
+  if (isBuying) {
+      if (day > 0) {
+        if (
+          player.cash >= currentMineral.changedPrice * sliderValue &&
+          currentMineral.amountOwned + sliderValue <= 100
+        ) {
+          setPlayer({
+            ...player,
+            cash: player.cash - currentMineral.changedPrice * sliderValue,
+          });
+
+          const copyMineral = [...mineral];
+          copyMineral[mineralID].amountOwned += sliderValue;
+          setMineral(copyMineral);
+        }
+
+        if (!isBuying && currentMineral.amountOwned >= sliderValue) {
+          console.log("we got here");
+          setPlayer({
+            ...player,
+            cash: player.cash + currentMineral.changedPrice * sliderValue,
+          });
+          if (currentMineral.amountOwned >= sliderValue) {
+            const copyMineral = [...mineral];
+            copyMineral[mineralID].amountOwned -= sliderValue;
+            setMineral(copyMineral);
+          }
+        }
+      } else if (day == 0) {
+        if (
+          player.cash >= currentMineral.startingPrice * sliderValue &&
+          currentMineral.amountOwned + sliderValue <= 100
+        ) {
+          setPlayer({
+            ...player,
+            cash: player.cash - currentMineral.startingPrice * sliderValue,
+          });
+
+          const copyMineral = [...mineral];
+          copyMineral[mineralID].amountOwned += sliderValue;
+          setMineral(copyMineral);
+        }
+
+        if (!isBuying && currentMineral.amountOwned >= sliderValue) {
+          setPlayer({
+            ...player,
+            cash: player.cash + currentMineral.startingPrice * sliderValue,
+          });
+          if (currentMineral.amountOwned >= sliderValue) {
+            const copyMineral = [...mineral];
+            copyMineral[mineralID].amountOwned -= sliderValue;
+            setMineral(copyMineral);
+          }
+        }
+      }
+    }*/
 
   return (
     <>
