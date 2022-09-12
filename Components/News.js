@@ -40,7 +40,7 @@ export default function News() {
     } else {
       setShowNews(false);
     }
-  }, [breakingGoodNews, day]);
+  }, [day]);
 
   return (
     <Flex
