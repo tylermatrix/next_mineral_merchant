@@ -49,13 +49,7 @@ function MineralList() {
       >
         <Flex alignItems="center" gap={9} padding="5px">
           <Box height="38px" width="38px" />
-          <Text
-            fontWeight="600"
-            fontSize="18px"
-            color="white"
-            minW="115px"
-            marginLeft="5px"
-          >
+          <Text fontWeight="600" fontSize="18px" color="white" minW="115px">
             Name
           </Text>
           <Flex minW="30px" justifyContent="left">
@@ -109,7 +103,12 @@ function MineralList() {
             <Text color="white" minW="30px">
               {min.amountOwned}
             </Text>
-            <Text color="white" marginRight="50px" justifySelf="right">
+            <Text
+              color="white"
+              marginRight="50px"
+              justifySelf="right"
+              width="50px"
+            >
               {min.changedPrice ? min.changedPrice : min.startingPrice}
             </Text>
           </Flex>
