@@ -44,15 +44,14 @@ function MineralList() {
         height="65px"
         alignItems="center"
         alignSelf="center"
-        marginLeft="10px"
         marginRight="10px"
       >
         <Flex alignItems="center" gap={9} padding="5px">
           <Box height="38px" width="38px" />
-          <Text fontWeight="600" fontSize="18px" color="white" minW="115px">
+          <Text fontWeight="600" fontSize="18px" color="white" minW="110px">
             Name
           </Text>
-          <Flex minW="30px" justifyContent="left">
+          <Flex minW="30px" justifyContent="left" paddingRight="10px">
             <Icon as={GiShoppingCart} color="green" w={7} h={7}></Icon>
           </Flex>
           <Text fontWeight="600" fontSize="18px" color="white">
@@ -62,7 +61,7 @@ function MineralList() {
       </Flex>
       {minerals.map((min, index) => (
         <Flex
-          width="100%"
+          width="90%"
           height="65px"
           background="#37364C"
           boxShadow="4px 4px 18px #0A091A, -3px -3px 9px #646282"
@@ -103,12 +102,7 @@ function MineralList() {
             <Text color="white" minW="30px">
               {min.amountOwned}
             </Text>
-            <Text
-              color="white"
-              marginRight="50px"
-              justifySelf="right"
-              width="50px"
-            >
+            <Text color="white" marginRight="50px" width="50px">
               {min.changedPrice ? min.changedPrice : min.startingPrice}
             </Text>
           </Flex>
