@@ -9,6 +9,7 @@ import {
   gameoverAtom,
 } from "../state/GlobalState";
 import ResourceItem from "./ResourceItem";
+import { useState } from "react";
 export default function ResourceMonitor() {
   const [day, setDay] = useAtom(dayAtom);
   const [player, setPlayer] = useAtom(playerAtom);
@@ -26,10 +27,18 @@ export default function ResourceMonitor() {
     setGameover(false);
   };
 
+  const payDebt = () => {
+    if (player.cash >= player.debt) {
+      setPlayer({ ...player, cash: player.cash - player.debt, debt: 0 });
+    } else {
+      return;
+    }
+  };
+
   return (
     <>
       <Flex
-        minW="387px"
+        maxW="420px"
         height="481px"
         direction="column"
         bg="#353448"
@@ -52,7 +61,29 @@ export default function ResourceMonitor() {
           </Text>
 
           <Button
-            width="70%"
+            width="35%"
+            height="65px"
+            color="white"
+            background="#37364C"
+            boxShadow="4px 4px 18px #0A091A, -3px -3px 9px #646282"
+            borderRadius="20px"
+            justifyContent="space-evenly"
+            alignItems="center"
+            marginTop="25px"
+            marginRight="30px"
+            alignSelf="center"
+            as={motion.div}
+            whileHover={{ scale: 0.99 }}
+            cursor="pointer"
+            onClick={() => {
+              payDebt();
+            }}
+          >
+            {" "}
+            Pay Debt
+          </Button>
+          <Button
+            width="35%"
             height="65px"
             color="white"
             background="#37364C"
@@ -70,8 +101,7 @@ export default function ResourceMonitor() {
               resetDay();
             }}
           >
-            {" "}
-            Reset Game
+            Reset
           </Button>
         </Flex>
         <ResourceItem resource="PLANET">{selectedPlanet}</ResourceItem>
