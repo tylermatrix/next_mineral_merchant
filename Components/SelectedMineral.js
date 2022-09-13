@@ -45,13 +45,13 @@ function SelectedMineral({ mineral: mineralFromArray }) {
 
   const maxValueFunction = () => {
     if (currentMineral.changedPrice) {
-      if (player.cash / currentMineral.changedPrice > 100) {
-        return 50;
+      if (player.cash / currentMineral.changedPrice >= 100) {
+        return 100;
       } else {
         return player.cash / currentMineral.changedPrice;
       }
     } else {
-      if (player.cash / currentMineral.startingPrice > 100) {
+      if (player.cash / currentMineral.startingPrice >= 100) {
         return 50;
       } else {
         return player.cash / currentMineral.startingPrice;
@@ -236,7 +236,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
             <CircularProgress
               value={sliderValue}
               color={isBuying ? "teal" : "red"}
-              size="210.46px"
+              size="195.46px"
             >
               <CircularProgressLabel color="white">
                 {sliderValue}
@@ -300,38 +300,25 @@ function SelectedMineral({ mineral: mineralFromArray }) {
             width="80%"
             alignSelf="center"
           >
-            <Slider
-              aria-label="slider-ex-6"
-              color={isBuying ? "teal" : "red"}
-              colorScheme={isBuying ? "teal" : "red"}
-              defaultValue={currentMineral.amountOwned}
-              max={maxBuySliderValue}
-              onChange={(val) => setSliderValue(val)}
-            >
-              <SliderMark value={0} {...labelStyles}>
-                0
-              </SliderMark>
-              <SliderMark
-                value={
-                  currentMineral.changedPrice
-                    ? player.cash / currentMineral.changedPrice
-                    : player.cash / currentMineral.startingPrice
-                }
-                {...labelStyles}
+            <Box maxW="400px">
+              <Slider
+                aria-label="slider-ex-6"
+                color={isBuying ? "teal" : "red"}
+                colorScheme={isBuying ? "teal" : "red"}
+                defaultValue={currentMineral.amountOwned}
+                max={maxBuySliderValue}
+                onChange={(val) => setSliderValue(val)}
               >
-                {Math.floor(maxBuySliderValue)}
-              </SliderMark>
-              <SliderMark value={100} {...labelStyles}>
-                {maxBuySliderValue}
-              </SliderMark>
-              <SliderTrack>
-                <SliderFilledTrack />
-              </SliderTrack>
+                <SliderTrack>
+                  <SliderFilledTrack />
+                </SliderTrack>
 
-              <SliderThumb boxSize={6}>
-                <Box color={isBuying ? "teal" : "red"} as={GiMineralPearls} />
-              </SliderThumb>
-            </Slider>
+                <SliderThumb boxSize={6}>
+                  <Box color={isBuying ? "teal" : "red"} as={GiMineralPearls} />
+                </SliderThumb>
+              </Slider>
+            </Box>
+
             <Flex justifyContent="center">
               <Text color="red" marginTop="10px">
                 {!isBuying && currentMineral.amountOwned < 1
