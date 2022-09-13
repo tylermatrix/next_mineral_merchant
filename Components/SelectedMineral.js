@@ -198,6 +198,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
               margin="25px"
               as={motion.div}
               transition="ease-in 1s"
+              width="200px"
             >
               {currentMineral.name} @ $
               {currentMineral.changedPrice
@@ -269,7 +270,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
             </Button>
           </Flex>
 
-          <Flex direction="column" justifyContent="center" alignItems="center">
+          <Flex direction="row" justifyContent="center" alignItems="center">
             <Text
               color="#c1c1c1"
               fontFamily="Poppins"
@@ -277,11 +278,21 @@ function SelectedMineral({ mineral: mineralFromArray }) {
               fontWeight="600"
               fontSize="14px"
               lineHeight="38px"
-              as={motion.div}
-              transition="ease-in 1s"
               marginTop="10px"
             >
-              Current Amount:{currentMineral.amountOwned}
+              Current Amount:
+            </Text>
+            <Text
+              color={currentMineral.amountOwned ? "green" : "#c1c1c1"}
+              fontFamily="Poppins"
+              fontStyle="normal"
+              fontWeight="600"
+              fontSize="14px"
+              lineHeight="38px"
+              marginTop="10px"
+              marginLeft="10px"
+            >
+              {currentMineral.amountOwned}
             </Text>
           </Flex>
           <Flex
