@@ -205,22 +205,6 @@ function SelectedMineral({ mineral: mineralFromArray }) {
                 : currentMineral.startingPrice}
             </Text>
 
-            <Flex direction="column">
-              <Text
-                color="#c1c1c1"
-                fontFamily="Poppins"
-                fontStyle="normal"
-                fontWeight="600"
-                fontSize="25px"
-                lineHeight="38px"
-                marginTop="25px"
-                as={motion.div}
-                transition="ease-in 1s"
-              >
-                Current Amount: {currentMineral.amountOwned}
-              </Text>
-            </Flex>
-
             <Text
               display="flex"
               fontFamily="Poppins"
@@ -284,9 +268,25 @@ function SelectedMineral({ mineral: mineralFromArray }) {
               {isBuying ? "Buy" : "Sell"}
             </Button>
           </Flex>
+
+          <Flex direction="column" justifyContent="center" alignItems="center">
+            <Text
+              color="#c1c1c1"
+              fontFamily="Poppins"
+              fontStyle="normal"
+              fontWeight="600"
+              fontSize="14px"
+              lineHeight="38px"
+              as={motion.div}
+              transition="ease-in 1s"
+              marginTop="10px"
+            >
+              Current Amount:{currentMineral.amountOwned}
+            </Text>
+          </Flex>
           <Flex
             direction="column"
-            marginTop="50px"
+            marginTop="20px"
             width="80%"
             alignSelf="center"
           >
