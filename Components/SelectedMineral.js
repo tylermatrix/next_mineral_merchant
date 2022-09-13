@@ -306,7 +306,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
                 color={isBuying ? "teal" : "red"}
                 colorScheme={isBuying ? "teal" : "red"}
                 defaultValue={currentMineral.amountOwned}
-                max={maxBuySliderValue}
+                max={isBuying ? maxBuySliderValue : currentMineral.amountOwned}
                 onChange={(val) => setSliderValue(val)}
               >
                 <SliderTrack>
