@@ -40,10 +40,30 @@ function SelectedMineral({ mineral: mineralFromArray }) {
   useEffect(() => {
     setSliderValue(currentMineral.amountOwned ? currentMineral.amountOwned : 0);
   }, [currentMineral]);
+
   const currentMineral = mineral.find((m) => m.id === mineralID);
 
+  const maxValueFunction = () => {
+    if (currentMineral.changedPrice) {
+      if (player.cash / currentMineral.changedPrice > 100) {
+        return 50;
+      } else {
+        return player.cash / currentMineral.changedPrice;
+      }
+    } else {
+      if (player.cash / currentMineral.startingPrice > 100) {
+        return 50;
+      } else {
+        return player.cash / currentMineral.startingPrice;
+      }
+    }
+  };
+
+  const maxBuySliderValue = Math.floor(maxValueFunction());
+  console.log(maxBuySliderValue);
   const handleChange = (e) => {
     setIsBuying((isBuying = !isBuying));
+    console.log(currentMineral.changedPrice);
     console.log(isBuying);
     setSliderValue(currentMineral.amountOwned ? currentMineral.amountOwned : 0);
   };
@@ -264,15 +284,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
               color={isBuying ? "teal" : "red"}
               colorScheme={isBuying ? "teal" : "red"}
               defaultValue={currentMineral.amountOwned}
-              max={
-                isBuying
-                  ? Math.floor(
-                      player.cash / currentMineral.startingPrice > 100
-                        ? 100
-                        : player.cash / currentMineral.startingPrice
-                    )
-                  : currentMineral.amountOwned
-              }
+              max={maxBuySliderValue}
               onChange={(val) => setSliderValue(val)}
             >
               <SliderMark value={0} {...labelStyles}>
@@ -286,18 +298,10 @@ function SelectedMineral({ mineral: mineralFromArray }) {
                 )}
                 {...labelStyles}
               >
-                {Math.floor(
-                  player.cash / currentMineral.startingPrice > 100
-                    ? 50
-                    : player.cash / currentMineral.startingPrice / 2
-                )}
+                {Math.floor(maxBuySliderValue)}
               </SliderMark>
               <SliderMark value={100} {...labelStyles}>
-                {Math.floor(
-                  player.cash / currentMineral.startingPrice > 100
-                    ? 100
-                    : player.cash / currentMineral.startingPrice
-                )}
+                {maxBuySliderValue}
               </SliderMark>
               <SliderTrack>
                 <SliderFilledTrack />

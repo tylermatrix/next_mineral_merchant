@@ -3,6 +3,7 @@ import {
   breakingGoodNewsAtom,
   mineralAtom,
   showNewsAtom,
+  specialMineralPriceAtom,
 } from "../state/GlobalState";
 import { useAtom } from "jotai";
 import { dayAtom } from "../state/GlobalState";
@@ -35,8 +36,8 @@ export default function News() {
         return { ...item };
       });
 
-      setMineral(newMineral);
       setBreakingNewsItem(breakingGoodNewsCopy);
+      setMineral(newMineral);
     } else {
       setShowNews(false);
     }

@@ -10,6 +10,7 @@ import {
   highscoresAtom,
   playerAtom,
   showNewsAtom,
+  specialMineralPriceAtom,
 } from "../state/GlobalState";
 import { motion } from "framer-motion";
 
@@ -26,28 +27,25 @@ function TravelButton({ planetName = "planet" }) {
     if (day == 30) {
       setGameover(true);
       setHighscores([...highscores, player.cash]);
-    } else if (selectedPlanet === planetName) {
-      return;
     } else {
       setSelectedPlanet(planetName);
-      setDay(day + 1);
-
       const newMineral = mineral.map((item) => {
-        if (item.changedPrice) {
-          item.lastChangedPrice = item.changedPrice;
-        }
+        item.lastChangedPrice = item.changedPrice;
+        item.changedPrice = Math.floor(
+          item.startingPrice * (Math.random() * 0.6 + 0.7)
+        );
         return {
           ...item,
-          changedPrice: Math.floor(
-            item.startingPrice * (Math.random() * 0.6 + 0.7)
-          ),
         };
       });
+
       const copyPlayer = player;
       const newDebt = Math.round(player.debt * 1.15);
       copyPlayer = { ...player, debt: newDebt };
       setPlayer(copyPlayer);
       setMineral(newMineral);
+
+      setDay(day + 1);
     }
   };
 
