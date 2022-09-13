@@ -205,6 +205,22 @@ function SelectedMineral({ mineral: mineralFromArray }) {
                 : currentMineral.startingPrice}
             </Text>
 
+            <Flex direction="column">
+              <Text
+                color="#c1c1c1"
+                fontFamily="Poppins"
+                fontStyle="normal"
+                fontWeight="600"
+                fontSize="25px"
+                lineHeight="38px"
+                marginTop="25px"
+                as={motion.div}
+                transition="ease-in 1s"
+              >
+                Current Amount: {currentMineral.amountOwned}
+              </Text>
+            </Flex>
+
             <Text
               display="flex"
               fontFamily="Poppins"
@@ -274,11 +290,6 @@ function SelectedMineral({ mineral: mineralFromArray }) {
             width="80%"
             alignSelf="center"
           >
-            <Text color="red">
-              {!isBuying && currentMineral.amountOwned < 1
-                ? "You have nothing to sell!"
-                : ""}
-            </Text>
             <Slider
               aria-label="slider-ex-6"
               color={isBuying ? "teal" : "red"}
@@ -291,11 +302,11 @@ function SelectedMineral({ mineral: mineralFromArray }) {
                 0
               </SliderMark>
               <SliderMark
-                value={Math.floor(
-                  player.cash / currentMineral.startingPrice > 100
-                    ? 50
-                    : player.cash / currentMineral.startingPrice / 2
-                )}
+                value={
+                  currentMineral.changedPrice
+                    ? player.cash / currentMineral.changedPrice
+                    : player.cash / currentMineral.startingPrice
+                }
                 {...labelStyles}
               >
                 {Math.floor(maxBuySliderValue)}
@@ -311,12 +322,13 @@ function SelectedMineral({ mineral: mineralFromArray }) {
                 <Box color={isBuying ? "teal" : "red"} as={GiMineralPearls} />
               </SliderThumb>
             </Slider>
-          </Flex>
-
-          <Flex marginTop="40px" direction="column">
-            <Text color="white">
-              Current Amount: {currentMineral.amountOwned}
-            </Text>
+            <Flex justifyContent="center">
+              <Text color="red" marginTop="30px">
+                {!isBuying && currentMineral.amountOwned < 1
+                  ? "You have nothing to sell!"
+                  : ""}
+              </Text>
+            </Flex>
           </Flex>
         </Flex>
       </ScaleFade>
