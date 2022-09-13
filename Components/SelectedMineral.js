@@ -218,8 +218,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
               backgroundColor="#37364C"
               borderRadius="20px"
               width="91.06px"
-              height="39.3px"
-              boxShadow="4px 4px 18px #0A091A, -3px -3px 9px #646282"
+              height="31.3px"
               justifyContent="center"
               alignItems="center"
               cursor="pointer"
@@ -334,7 +333,7 @@ function SelectedMineral({ mineral: mineralFromArray }) {
               </SliderThumb>
             </Slider>
             <Flex justifyContent="center">
-              <Text color="red" marginTop="15px">
+              <Text color="red" marginTop="10px">
                 {!isBuying && currentMineral.amountOwned < 1
                   ? "You have nothing to sell!"
                   : ""}
